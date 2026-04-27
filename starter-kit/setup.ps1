@@ -3,6 +3,8 @@
 # irm https://claude-guide-sandy.vercel.app/starter-kit/setup.ps1 | iex
 
 $ErrorActionPreference = "Stop"
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
 $baseUrl = "https://claude-guide-sandy.vercel.app/starter-kit"
 
 Write-Host ""

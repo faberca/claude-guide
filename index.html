@@ -143,6 +143,17 @@
         <code class="text-sm leading-relaxed" id="install-script">irm https://claude-guide-sandy.vercel.app/install.ps1 | iex</code>
       </div>
 
+      <details class="surface-card p-5 mt-4">
+        <summary class="cursor-pointer text-sm font-medium text-stone-600">한글이 깨져 보이면?</summary>
+        <div class="mt-4 text-sm text-stone-500 space-y-3">
+          <p>PowerShell 기본 인코딩이 한글을 못 읽는 경우입니다. 아래를 <strong>먼저</strong> 실행한 뒤 다시 시도하세요:</p>
+          <div class="code-block px-4 py-3 text-xs"><code>[Console]::OutputEncoding = [System.Text.Encoding]::UTF8</code></div>
+          <p>또는 한글 없이 작동하는 <strong>2줄 버전</strong>:</p>
+          <div class="code-block px-4 py-3 text-xs"><code>$f = "$env:TEMP\cc-install.ps1"; irm https://claude-guide-sandy.vercel.app/install.ps1 -OutFile $f; powershell -ExecutionPolicy Bypass -File $f</code></div>
+          <p class="text-xs text-stone-400">파일로 저장 후 실행하면 인코딩 문제가 거의 없습니다.</p>
+        </div>
+      </details>
+
       <div class="grid md:grid-cols-3 gap-4 mt-8">
         <div class="card p-5 text-center">
           <div class="text-xs font-medium text-stone-400 mb-2">필수</div>

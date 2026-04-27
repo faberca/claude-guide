@@ -2,6 +2,8 @@
 # 사용법: irm https://claude-guide-sandy.vercel.app/install.ps1 | iex
 
 $ErrorActionPreference = "Stop"
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
 
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
