@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 시작하기</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Pretendard Variable', 'system-ui', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+          colors: { surface: '#F7F6F3', border: 'rgba(0,0,0,0.08)', accent: '#D97706', 'accent-light': '#FEF3C7' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Pretendard Variable', system-ui, sans-serif; background: #FAFAF9; color: #1C1917; }
+    .code-block { background: #1C1917; color: #E7E5E4; border-radius: 12px; font-family: 'JetBrains Mono', monospace; }
+    .code-block-light { background: #F5F5F4; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; font-family: 'JetBrains Mono', monospace; }
+    .card { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; transition: all 0.2s; }
+    .card:hover { border-color: rgba(0,0,0,0.12); box-shadow: 0 4px 24px rgba(0,0,0,0.04); }
+    .surface-card { background: #F7F6F3; border-radius: 16px; }
+    .copy-btn { transition: all 0.15s; }
+    .copy-btn:active { transform: scale(0.95); }
+    .tab-active { background: #1C1917; color: white; }
+    .tab-inactive { background: transparent; color: #78716C; }
+    .tab-inactive:hover { background: #F5F5F4; }
+    html { scroll-behavior: smooth; }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .section-gap { padding: 80px 0; }
+    .prompt-tag { font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; }
+    ::selection { background: #FEF3C7; }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Nav -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-black/[0.06]">
+    <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+      <span class="font-semibold tracking-tight">Claude Code Guide</span>
+      <div class="flex gap-6 text-sm text-stone-500">
+        <a href="#compare" class="hover:text-stone-900 transition">비교</a>
+        <a href="#install" class="hover:text-stone-900 transition">설치</a>
+        <a href="#first-use" class="hover:text-stone-900 transition">시작</a>
+        <a href="#level-up" class="hover:text-stone-900 transition">레벨업</a>
+        <a href="#starter-kit" class="hover:text-stone-900 transition">스타터킷</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="max-w-5xl mx-auto px-6 pt-24 pb-16 fade-in">
+    <div class="max-w-2xl">
+      <p class="text-sm font-medium text-amber-600 mb-4">한나, 클맨을 위한 Windows Setup Guide</p>
+      <h1 class="text-5xl font-extrabold tracking-tight leading-[1.1] mb-5">
+        웹 Claude 말고,<br>
+        <span class="text-amber-600">Claude Code</span>.
+      </h1>
+      <p class="text-lg text-stone-500 leading-relaxed mb-8">
+        채팅창에 코드 복붙하는 시대는 끝났습니다.<br>
+        AI가 직접 파일을 읽고, 코드를 쓰고, 실행합니다.
+      </p>
+      <div class="flex gap-3">
+        <a href="#install" class="px-6 py-3 bg-stone-900 text-white text-sm font-medium rounded-lg hover:bg-stone-800 transition flex items-center gap-2">
+          설치하기 <span>&rarr;</span>
+        </a>
+        <a href="#compare" class="px-6 py-3 text-sm font-medium text-stone-500 rounded-lg hover:bg-stone-100 transition">
+          뭐가 다른데?
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Compare -->
+  <section id="compare" class="section-gap">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-medium text-amber-600 mb-2">Comparison</p>
+      <h2 class="text-3xl font-bold tracking-tight mb-10">웹 AI vs Claude Code</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Web AI -->
+        <div class="surface-card p-8">
+          <div class="text-sm font-medium text-stone-400 mb-4">웹 AI (ChatGPT / Gemini / Claude.ai)</div>
+          <ul class="space-y-4 text-[15px] text-stone-600">
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">01</span> 파일을 직접 업로드해야 함</li>
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">02</span> 코드를 채팅에서 복사 → 수동 붙여넣기</li>
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">03</span> 실행/테스트 불가 (직접 해야 함)</li>
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">04</span> Git 연동 없음</li>
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">05</span> 파일 하나씩 왔다갔다</li>
+            <li class="flex gap-3 font-medium text-stone-800"><span class="text-stone-400 shrink-0">==</span> 사람이 일하고, AI가 조언</li>
+          </ul>
+        </div>
+
+        <!-- Claude Code -->
+        <div class="card p-8 border-amber-200 bg-amber-50/30">
+          <div class="text-sm font-medium text-amber-600 mb-4">Claude Code (VSCode + Terminal)</div>
+          <ul class="space-y-4 text-[15px] text-stone-700">
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">01</span> <strong>프로젝트 전체를 직접 읽음</strong></li>
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">02</span> <strong>파일에 직접 쓰고 저장</strong></li>
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">03</span> <strong>터미널 명령어 직접 실행</strong></li>
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">04</span> <strong>커밋, PR, 브랜치 자동</strong></li>
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">05</span> <strong>수십 개 파일 동시 수정</strong></li>
+            <li class="flex gap-3 font-bold text-amber-700"><span class="text-amber-500 shrink-0">==</span> AI가 일하고, 사람이 방향 설정</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section id="install" class="section-gap bg-white border-y border-black/[0.06]">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-medium text-amber-600 mb-2">Installation</p>
+      <h2 class="text-3xl font-bold tracking-tight mb-3">원클릭 설치</h2>
+      <p class="text-stone-500 mb-10">PowerShell에 한 줄 붙여넣으면 Git, VSCode, Claude Code가 자동 설치됩니다.</p>
+
+      <!-- PS help toggle -->
+      <details class="surface-card p-5 mb-6">
+        <summary class="cursor-pointer text-sm font-medium text-stone-600">PowerShell 여는 법</summary>
+        <div class="mt-4 flex gap-8 text-sm text-stone-500">
+          <div><span class="inline-block w-5 h-5 bg-stone-200 rounded text-center text-xs leading-5 font-bold mr-2">1</span> Win 키 누르기</div>
+          <div><span class="inline-block w-5 h-5 bg-stone-200 rounded text-center text-xs leading-5 font-bold mr-2">2</span> powershell 입력</div>
+          <div><span class="inline-block w-5 h-5 bg-stone-200 rounded text-center text-xs leading-5 font-bold mr-2">3</span> Enter (관리자 불필요)</div>
+        </div>
+      </details>
+
+      <!-- Main script -->
+      <div class="code-block p-6 relative">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs text-stone-500">PowerShell</span>
+          <button onclick="copyScript()" id="copy-main" class="copy-btn px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-xs font-medium rounded-lg">복사</button>
+        </div>
+        <code class="text-sm leading-relaxed" id="install-script">irm https://claude-guide.vercel.app/install.ps1 | iex</code>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 mt-8">
+        <div class="card p-5 text-center">
+          <div class="text-xs font-medium text-stone-400 mb-2">필수</div>
+          <div class="font-semibold">Git</div>
+          <p class="text-xs text-stone-400 mt-1">Claude Code 내부에서 사용</p>
+        </div>
+        <div class="card p-5 text-center">
+          <div class="text-xs font-medium text-stone-400 mb-2">권장</div>
+          <div class="font-semibold">VSCode</div>
+          <p class="text-xs text-stone-400 mt-1">최적의 작업 환경</p>
+        </div>
+        <div class="card p-5 text-center border-amber-200">
+          <div class="text-xs font-medium text-amber-600 mb-2">핵심</div>
+          <div class="font-semibold text-amber-700">Claude Code</div>
+          <p class="text-xs text-stone-400 mt-1">AI 코딩 에이전트</p>
+        </div>
+      </div>
+
+      <details class="mt-6 text-sm">
+        <summary class="cursor-pointer text-stone-400 hover:text-stone-600">다른 설치 방법</summary>
+        <div class="mt-3 space-y-3 text-stone-500">
+          <p><strong>VSCode Extension:</strong> Ctrl+Shift+X &rarr; "Claude Code" 검색 &rarr; Anthropic 설치</p>
+          <p><strong>WinGet 수동:</strong></p>
+          <div class="code-block-light p-3 text-xs mt-1">winget install Git.Git && winget install Microsoft.VisualStudioCode && winget install Anthropic.ClaudeCode</div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- First Use -->
+  <section id="first-use" class="section-gap">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-medium text-amber-600 mb-2">Getting Started</p>
+      <h2 class="text-3xl font-bold tracking-tight mb-3">설치 완료, 이제 뭐 해?</h2>
+      <p class="text-stone-500 mb-10">3단계만 따라하세요.</p>
+
+      <div class="space-y-4">
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="w-8 h-8 bg-stone-100 rounded-lg flex items-center justify-center text-sm font-bold text-stone-400 shrink-0">1</div>
+          <div>
+            <h3 class="font-semibold mb-1">VSCode 터미널 열기</h3>
+            <p class="text-sm text-stone-500">VSCode 열고 <kbd class="px-1.5 py-0.5 bg-stone-100 rounded text-xs font-mono">Ctrl + `</kbd> 누르면 하단에 터미널이 열립니다</p>
+          </div>
+        </div>
+
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="w-8 h-8 bg-stone-100 rounded-lg flex items-center justify-center text-sm font-bold text-stone-400 shrink-0">2</div>
+          <div class="flex-1">
+            <h3 class="font-semibold mb-1">Claude Code 실행</h3>
+            <div class="code-block px-4 py-3 mt-2 flex justify-between items-center">
+              <code class="text-amber-400 text-sm">claude</code>
+              <button onclick="copyText('claude')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+            </div>
+            <p class="text-xs text-stone-400 mt-2">브라우저가 열려서 로그인 요청 &rarr; 로그인하면 자동 연결</p>
+          </div>
+        </div>
+
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center text-sm font-bold text-amber-600 shrink-0">3</div>
+          <div class="flex-1">
+            <h3 class="font-semibold mb-1">아무거나 시켜보기</h3>
+            <div class="space-y-2 mt-3">
+              <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
+                <code>이 폴더에 있는 파일들 설명해줘</code>
+                <button onclick="copyText('이 폴더에 있는 파일들 설명해줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+              </div>
+              <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
+                <code>간단한 TODO 앱 만들어줘. HTML 파일 하나로.</code>
+                <button onclick="copyText('간단한 TODO 앱 만들어줘. HTML 파일 하나로.')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+              </div>
+              <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
+                <code>README.md 만들어줘. 이 프로젝트 설명하는 내용으로.</code>
+                <button onclick="copyText('README.md 만들어줘. 이 프로젝트 설명하는 내용으로.')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Level Up -->
+  <section id="level-up" class="section-gap bg-white border-y border-black/[0.06]">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-medium text-amber-600 mb-2">Level Up</p>
+      <h2 class="text-3xl font-bold tracking-tight mb-3">초심자에서 고수로</h2>
+      <p class="text-stone-500 mb-8">10배 더 잘 쓰는 핵심 기술</p>
+
+      <div class="flex gap-2 mb-8">
+        <button onclick="showLevel('beginner')" id="tab-beginner" class="px-4 py-2 rounded-lg text-sm font-medium transition tab-active">입문</button>
+        <button onclick="showLevel('intermediate')" id="tab-intermediate" class="px-4 py-2 rounded-lg text-sm font-medium transition tab-inactive">중급</button>
+        <button onclick="showLevel('advanced')" id="tab-advanced" class="px-4 py-2 rounded-lg text-sm font-medium transition tab-inactive">고급</button>
+      </div>
+
+      <!-- Beginner -->
+      <div id="level-beginner" class="space-y-4">
+        <div class="card p-6">
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">CLAUDE.md 만들기</div>
+          <p class="text-sm text-stone-600 mb-3">프로젝트 루트에 CLAUDE.md를 두면 Claude가 매 대화마다 자동으로 읽습니다. 코드 스타일, 규칙, 워크플로우를 한 번 적어두면 매번 설명할 필요 없음.</p>
+          <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
+            <code class="text-amber-400">/init</code>
+            <button onclick="copyText('/init')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+          </div>
+          <p class="text-xs text-stone-400 mt-2">프로젝트를 분석해서 CLAUDE.md 초안을 자동 생성</p>
+        </div>
+
+        <div class="card p-6">
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">검증 기준 주기 (가장 중요)</div>
+          <p class="text-sm text-stone-600 mb-3">"테스트 돌려봐"라고 하면 Claude가 스스로 검증합니다. 안 하면 그럴듯하지만 틀린 코드가 나올 수 있음.</p>
+          <div class="code-block px-4 py-3 text-sm">
+            <code>validateEmail 함수 만들어줘. test@example.com은 true, invalid는 false로. <span class="text-amber-400">테스트도 만들고 실행해봐.</span></code>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">코드베이스 질문하기</div>
+          <p class="text-sm text-stone-600 mb-3">새 프로젝트에 투입됐을 때, 선배한테 물어보듯이 질문하세요.</p>
+          <div class="space-y-2">
+            <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
+              <code>이 프로젝트의 폴더 구조와 각 역할을 설명해줘</code>
+              <button onclick="copyText('이 프로젝트의 폴더 구조와 각 역할을 설명해줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+            </div>
+            <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
+              <code>로그인 기능이 어떻게 구현되어 있는지 알려줘</code>
+              <button onclick="copyText('로그인 기능이 어떻게 구현되어 있는지 알려줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Intermediate -->
+      <div id="level-intermediate" class="space-y-4 hidden">
+        <div class="card p-6">
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">Plan Mode: 탐색 &rarr; 계획 &rarr; 실행</div>
+          <p class="text-sm text-stone-600 mb-4">큰 작업은 바로 코딩하지 말고, Plan Mode에서 먼저 파악하세요.</p>
+          <div class="space-y-2">
+            <div class="code-block px-4 py-3 text-sm"><span class="text-stone-500">// Plan Mode (Shift+Tab)</span><br><code>src/auth 읽고 세션 관리가 어떻게 되는지 파악해줘</code></div>
+            <div class="code-block px-4 py-3 text-sm"><span class="text-stone-500">// Plan Mode</span><br><code>Google OAuth 추가하려면 어떤 파일을 바꿔야 해? 계획 세워줘</code></div>
+            <div class="code-block px-4 py-3 text-sm"><span class="text-stone-500">// Normal Mode</span><br><code>계획대로 구현해줘. 테스트도 작성하고 돌려봐.</code></div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">컨텍스트 관리</div>
+          <p class="text-sm text-stone-600 mb-4">Claude의 기억은 한정적. 주제가 바뀌면 리셋하세요.</p>
+          <div class="grid md:grid-cols-2 gap-2">
+            <div class="code-block-light px-4 py-3 text-sm"><span class="text-stone-400 text-xs">주제 전환</span><br><code class="text-stone-800 font-semibold">/clear</code></div>
+            <div class="code-block-light px-4 py-3 text-sm"><span class="text-stone-400 text-xs">대화 압축</span><br><code class="text-stone-800 font-semibold">/compact API 변경에 집중</code></div>
+            <div class="code-block-light px-4 py-3 text-sm"><span class="text-stone-400 text-xs">이전 대화</span><br><code class="text-stone-800 font-semibold">claude --continue</code></div>
+            <div class="code-block-light px-4 py-3 text-sm"><span class="text-stone-400 text-xs">되돌리기</span><br><code class="text-stone-800 font-semibold">Esc &rarr; Esc (rewind)</code></div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">인터뷰 시키기</div>
+          <p class="text-sm text-stone-600 mb-3">큰 기능을 만들 때, Claude에게 먼저 질문하게 하세요. 놓치기 쉬운 엣지케이스를 잡아줍니다.</p>
+          <div class="code-block px-4 py-3 text-sm">
+            <code>[기능 설명] 만들고 싶어. 먼저 나한테 질문해봐.<br>기술 구현, UX, 엣지케이스, 트레이드오프를 파고들어.<br>다 끝나면 SPEC.md로 정리해줘.</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced -->
+      <div id="level-advanced" class="space-y-4 hidden">
+        <div class="card p-6">
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">커스텀 스킬 만들기</div>
+          <p class="text-sm text-stone-600 mb-3">반복 워크플로우를 <code class="text-amber-700 bg-amber-50 px-1 rounded">/스킬이름</code>으로 즉시 실행. .claude/skills/에 SKILL.md 파일 추가.</p>
+          <div class="code-block px-4 py-3 text-sm">
+            <span class="text-stone-500"># .claude/skills/fix-issue/SKILL.md</span><br>
+            <span class="text-amber-400">---</span><br>
+            <span class="text-stone-400">name: fix-issue</span><br>
+            <span class="text-stone-400">description: GitHub 이슈 자동 수정</span><br>
+            <span class="text-amber-400">---</span><br>
+            <code>1. gh issue view $ARGUMENTS로 이슈 확인<br>2. 관련 파일 찾기<br>3. 수정 구현 + 테스트<br>4. PR 생성</code>
+          </div>
+          <p class="text-xs text-stone-400 mt-2">사용: <code class="font-mono text-amber-600">/fix-issue 1234</code></p>
+        </div>
+
+        <div class="card p-6">
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">행동 규칙 (.claude/rules/)</div>
+          <p class="text-sm text-stone-600 mb-3">Claude가 반복적으로 실수하는 패턴을 규칙으로 잡아두면 자동 교정됩니다. CLAUDE.md와 다른 점: rules/는 주제별로 분리 가능.</p>
+          <div class="code-block px-4 py-3 text-sm">
+            <span class="text-stone-500"># .claude/rules/verification.md</span><br>
+            <code>작업 완료 시 반드시 보고:<br>- 변경 파일 목록<br>- 실행한 검증 명령 + 출력<br>- 수치 증거<br>- "잘 됩니다" 같은 증거 없는 보고 금지</code>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">서브에이전트 & 병렬 세션</div>
+          <p class="text-sm text-stone-600 mb-3">복잡한 조사는 서브에이전트에게 위임. 메인 대화의 컨텍스트를 깨끗하게 유지.</p>
+          <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
+            <code>서브에이전트를 써서 인증 시스템의 토큰 갱신 로직 조사해줘</code>
+            <button onclick="copyText('서브에이전트를 써서 인증 시스템의 토큰 갱신 로직 조사해줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+          </div>
+          <p class="text-xs text-stone-400 mt-3">Writer/Reviewer 패턴: 세션 A에서 구현 &rarr; 세션 B에서 리뷰 &rarr; A에서 피드백 반영</p>
+        </div>
+
+        <div class="card p-6">
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">자동화 & 대규모 작업</div>
+          <div class="space-y-2">
+            <div class="code-block px-4 py-3 text-sm"><span class="text-stone-500"># CI/스크립트에서 비대화형 실행</span><br><code>claude -p "API 엔드포인트 목록 만들어줘" --output-format json</code></div>
+            <div class="code-block px-4 py-3 text-sm"><span class="text-stone-500"># 2000개 파일 일괄 마이그레이션</span><br><code>for file in $(cat files.txt); do<br>  claude -p "$file을 React에서 Vue로 변환" \<br>    --allowedTools "Edit,Bash(git commit *)"<br>done</code></div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">Hooks & MCP</div>
+          <p class="text-sm text-stone-600 mb-3">Hooks = Claude 행동에 자동 반응하는 스크립트. MCP = 외부 도구(Notion, DB, Figma) 연결.</p>
+          <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
+            <code>파일 수정할 때마다 eslint 자동 실행하는 hook 만들어줘</code>
+            <button onclick="copyText('파일 수정할 때마다 eslint 자동 실행하는 hook 만들어줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Starter Kit -->
+  <section id="starter-kit" class="section-gap">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-medium text-amber-600 mb-2">Starter Kit</p>
+      <h2 class="text-3xl font-bold tracking-tight mb-3">파워유저 세팅 원클릭 적용</h2>
+      <p class="text-stone-500 mb-4">공부 없이 복사 한 줄이면 Claude가 알아서 좋은 습관을 따릅니다.</p>
+
+      <div class="code-block p-6 mb-8">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs text-stone-500">프로젝트 폴더에서 실행</span>
+          <button onclick="copyText('irm https://claude-guide.vercel.app/starter-kit/setup.ps1 | iex')" id="copy-kit" class="copy-btn px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-xs font-medium rounded-lg">복사</button>
+        </div>
+        <code class="text-sm">irm https://claude-guide.vercel.app/starter-kit/setup.ps1 | iex</code>
+      </div>
+
+      <h3 class="font-semibold text-lg mb-4">이 스크립트가 설치하는 것</h3>
+
+      <div class="grid md:grid-cols-2 gap-4 mb-10">
+        <div class="card p-6">
+          <div class="prompt-tag text-stone-400 font-semibold mb-2">CLAUDE.md</div>
+          <h4 class="font-semibold mb-2">프로젝트 규칙</h4>
+          <p class="text-sm text-stone-500">터미널 3줄 이내 출력, 상세는 MD 저장. 검증 필수. 추측 금지. 심플하게 유지.</p>
+          <p class="text-xs text-stone-400 mt-2">Claude가 매 대화 시작 시 자동으로 읽음</p>
+        </div>
+
+        <div class="card p-6">
+          <div class="prompt-tag text-stone-400 font-semibold mb-2">.claude/rules/ (4개)</div>
+          <h4 class="font-semibold mb-2">행동 규칙</h4>
+          <ul class="text-sm text-stone-500 space-y-1">
+            <li><strong>context-management</strong> &mdash; 출력 절약, 컨텍스트 보호</li>
+            <li><strong>verification</strong> &mdash; 증거 기반 완료 보고 강제</li>
+            <li><strong>code-accuracy</strong> &mdash; 팩트 확인 후 답변</li>
+            <li><strong>self-improving</strong> &mdash; 실수 패턴 자동 규칙화</li>
+          </ul>
+        </div>
+
+        <div class="card p-6">
+          <div class="prompt-tag text-stone-400 font-semibold mb-2">.claude/skills/ (3개)</div>
+          <h4 class="font-semibold mb-2">즉시 사용 가능한 스킬</h4>
+          <ul class="text-sm text-stone-500 space-y-1">
+            <li><code class="text-amber-600 font-mono">/commit-flow</code> &mdash; 스마트 커밋 (변경 분석 &rarr; 메시지 생성 &rarr; 푸시 여부 확인)</li>
+            <li><code class="text-amber-600 font-mono">/review</code> &mdash; 코드 리뷰 (보안, 엣지케이스, 테스트 실행)</li>
+            <li><code class="text-amber-600 font-mono">/explain</code> &mdash; 파일/폴더를 쉬운 말로 설명</li>
+          </ul>
+        </div>
+
+        <div class="card p-6 border-amber-200 bg-amber-50/30">
+          <div class="prompt-tag text-amber-600 font-semibold mb-2">핵심 효과</div>
+          <h4 class="font-semibold mb-2">설치만 하면 Claude가 알아서</h4>
+          <ul class="text-sm text-stone-600 space-y-1">
+            <li>답변을 짧게 하고 길면 파일로 저장</li>
+            <li>추측 대신 파일을 직접 읽고 확인</li>
+            <li>작업 완료 시 증거와 함께 보고</li>
+            <li>같은 실수를 반복하면 스스로 규칙 추가</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- What's inside CLAUDE.md -->
+      <h3 class="font-semibold text-lg mb-4">CLAUDE.md에 뭐가 들어있나</h3>
+      <p class="text-sm text-stone-500 mb-6">스크립트가 설치하는 CLAUDE.md 하나에 아래가 전부 포함되어 있습니다. 개별 복사 필요 없음.</p>
+
+      <div class="surface-card p-6 space-y-4 text-sm">
+        <div class="grid md:grid-cols-2 gap-x-8 gap-y-3">
+          <div><span class="font-semibold text-stone-700">출력 규칙</span><span class="text-stone-400"> &mdash; 터미널 3줄, 나머지 파일 저장</span></div>
+          <div><span class="font-semibold text-stone-700">검증 강제</span><span class="text-stone-400"> &mdash; 증거 없는 "완료" 금지</span></div>
+          <div><span class="font-semibold text-stone-700">팩트체크 우선</span><span class="text-stone-400"> &mdash; 추측 대신 파일 직접 확인</span></div>
+          <div><span class="font-semibold text-stone-700">비판적 리뷰</span><span class="text-stone-400"> &mdash; 자동 반론 3가지</span></div>
+          <div><span class="font-semibold text-stone-700">실행 우선</span><span class="text-stone-400"> &mdash; 3일 이월 시 자동 쪼개기</span></div>
+          <div><span class="font-semibold text-stone-700">주도적 제안</span><span class="text-stone-400"> &mdash; 빌드 후 자동화/커밋 제안</span></div>
+          <div><span class="font-semibold text-stone-700">독립 검증</span><span class="text-stone-400"> &mdash; 구현 후 재확인 필수</span></div>
+          <div><span class="font-semibold text-stone-700">리서치 품질</span><span class="text-stone-400"> &mdash; 3+ 소스, 원본 보존</span></div>
+          <div><span class="font-semibold text-stone-700">컨텍스트 관리</span><span class="text-stone-400"> &mdash; /clear, /compact 자동 안내</span></div>
+          <div><span class="font-semibold text-stone-700">디자인 감각</span><span class="text-stone-400"> &mdash; 트렌디 UI 자동 생성</span></div>
+          <div><span class="font-semibold text-stone-700">자기개선</span><span class="text-stone-400"> &mdash; 실수 패턴 자동 규칙화</span></div>
+          <div><span class="font-semibold text-stone-700">Git 안전</span><span class="text-stone-400"> &mdash; 확인 없이 푸시 금지</span></div>
+        </div>
+      </div>
+
+      <div class="card p-5 mt-6 border-amber-200 bg-amber-50/30">
+        <p class="text-sm text-stone-700"><strong>설치 후 첫 마디:</strong></p>
+        <div class="code-block px-4 py-3 mt-3 text-sm">
+          <code>CLAUDE.md를 이 프로젝트에 맞게 수정해줘.<br>프로젝트 구조를 파악하고, 불필요한 규칙은 빼고, 이 프로젝트에 필요한 규칙을 추가해줘.</code>
+        </div>
+        <p class="text-xs text-stone-400 mt-2">Claude가 프로젝트를 분석해서 CLAUDE.md를 자동으로 커스터마이즈합니다. 대화 필요 없음.</p>
+      </div>
+
+      <details class="mt-6">
+        <summary class="cursor-pointer text-sm text-stone-400 hover:text-stone-600">CLAUDE.md 전체 내용 미리보기</summary>
+        <div class="code-block p-6 mt-3 text-xs leading-relaxed overflow-x-auto max-h-96 overflow-y-auto" id="claude-md-preview"></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Common Mistakes -->
+  <section class="section-gap bg-white border-y border-black/[0.06]">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-medium text-amber-600 mb-2">Pitfalls</p>
+      <h2 class="text-3xl font-bold tracking-tight mb-8">흔한 실수</h2>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="surface-card p-6">
+          <div class="text-sm font-semibold text-red-600 mb-2">잡탕 세션</div>
+          <p class="text-sm text-stone-500 mb-2">한 대화에서 이것저것 &rarr; 컨텍스트가 쓰레기로 가득</p>
+          <p class="text-sm font-medium text-emerald-700">해결: 주제 바뀌면 /clear</p>
+        </div>
+        <div class="surface-card p-6">
+          <div class="text-sm font-semibold text-red-600 mb-2">끝없는 수정</div>
+          <p class="text-sm text-stone-500 mb-2">"아니 그게 아니라..." 3번 반복 &rarr; 실패 시도가 쌓여서 악화</p>
+          <p class="text-sm font-medium text-emerald-700">해결: 2번 틀리면 /clear 후 처음부터</p>
+        </div>
+        <div class="surface-card p-6">
+          <div class="text-sm font-semibold text-red-600 mb-2">검증 없이 신뢰</div>
+          <p class="text-sm text-stone-500 mb-2">그럴듯해 보여서 그냥 씀 &rarr; 엣지케이스에서 터짐</p>
+          <p class="text-sm font-medium text-emerald-700">해결: "테스트 만들고 돌려봐" 한마디</p>
+        </div>
+        <div class="surface-card p-6">
+          <div class="text-sm font-semibold text-red-600 mb-2">CLAUDE.md 과잉</div>
+          <p class="text-sm text-stone-500 mb-2">규칙 너무 많으면 Claude가 절반 무시</p>
+          <p class="text-sm font-medium text-emerald-700">해결: "없으면 실수하나?" 기준으로 정리</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Links -->
+  <section class="section-gap">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-medium text-amber-600 mb-2">Resources</p>
+      <h2 class="text-3xl font-bold tracking-tight mb-8">공식 문서</h2>
+      <div class="grid md:grid-cols-3 gap-3">
+        <a href="https://code.claude.com/docs/en/quickstart" target="_blank" class="card p-5 hover:border-amber-200">
+          <div class="font-semibold text-sm mb-1">퀵스타트</div>
+          <div class="text-xs text-stone-400">code.claude.com</div>
+        </a>
+        <a href="https://code.claude.com/docs/en/setup" target="_blank" class="card p-5 hover:border-amber-200">
+          <div class="font-semibold text-sm mb-1">설치 가이드</div>
+          <div class="text-xs text-stone-400">OS별 상세</div>
+        </a>
+        <a href="https://code.claude.com/docs/en/best-practices" target="_blank" class="card p-5 hover:border-amber-200">
+          <div class="font-semibold text-sm mb-1">베스트 프랙티스</div>
+          <div class="text-xs text-stone-400">공식 사용 가이드</div>
+        </a>
+        <a href="https://code.claude.com/docs/en/vs-code" target="_blank" class="card p-5 hover:border-amber-200">
+          <div class="font-semibold text-sm mb-1">VSCode 통합</div>
+          <div class="text-xs text-stone-400">Extension 사용법</div>
+        </a>
+        <a href="https://code.claude.com/docs/en/authentication" target="_blank" class="card p-5 hover:border-amber-200">
+          <div class="font-semibold text-sm mb-1">인증 문제</div>
+          <div class="text-xs text-stone-400">로그인 안 될 때</div>
+        </a>
+        <a href="https://claude.ai/upgrade" target="_blank" class="card p-5 hover:border-amber-200">
+          <div class="font-semibold text-sm mb-1">Pro 업그레이드</div>
+          <div class="text-xs text-stone-400">Pro/Max 계정</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase -->
+  <section class="section-gap">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-medium text-amber-600 mb-2">Showcase</p>
+      <h2 class="text-3xl font-bold tracking-tight mb-3">Claude Code로 만든 것들</h2>
+      <p class="text-stone-500 mb-8">코딩 경험 없이, Claude Code만으로 만들고 운영 중인 실제 사이트입니다.</p>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="https://robotext.co.kr" target="_blank" class="card p-6 hover:border-amber-200 group">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-lg group-hover:bg-amber-50 transition">R</div>
+            <div>
+              <div class="font-semibold">robotext.co.kr</div>
+              <div class="text-xs text-stone-400">개인 대시보드</div>
+            </div>
+          </div>
+          <p class="text-sm text-stone-500">Next.js + Vercel 배포. 주식 모니터링, 자동화 대시보드를 Claude Code로 구축.</p>
+        </a>
+
+        <a href="https://jerrynews.vercel.app" target="_blank" class="card p-6 hover:border-amber-200 group">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-lg group-hover:bg-amber-50 transition">J</div>
+            <div>
+              <div class="font-semibold">jerrynews.vercel.app</div>
+              <div class="text-xs text-stone-400">뉴스 자동화 서비스</div>
+            </div>
+          </div>
+          <p class="text-sm text-stone-500">주식 뉴스 수집 + 리서치 리포트 자동 생성. Slack 연동까지 전부 Claude Code로.</p>
+        </a>
+      </div>
+
+      <div class="surface-card p-6 mt-6 text-center">
+        <p class="text-sm text-stone-600">이 가이드 사이트 자체도 Claude Code로 만들었습니다.</p>
+        <p class="text-sm text-stone-500 mt-1">HTML + Tailwind, 대화 한 세션으로 기획부터 배포까지.</p>
+        <p class="text-sm text-stone-400 mt-2">너희도 만들고 싶은 거 있으면 Claude Code한테 시켜봐.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="max-w-5xl mx-auto px-6 py-12 text-center text-sm text-stone-400 border-t border-black/[0.06]">
+    <p>이 사이트는 Claude Code로 만들었습니다.</p>
+  </footer>
+
+  <script>
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target;
+        const orig = btn.textContent;
+        btn.textContent = '완료!';
+        btn.classList.add('text-emerald-500');
+        setTimeout(() => { btn.textContent = orig; btn.classList.remove('text-emerald-500'); }, 1200);
+      });
+    }
+    function copyScript() {
+      const code = document.getElementById('install-script').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('copy-main');
+        btn.textContent = '복사 완료!';
+        btn.classList.replace('bg-amber-600','bg-emerald-600');
+        setTimeout(() => { btn.textContent = '복사'; btn.classList.replace('bg-emerald-600','bg-amber-600'); }, 1500);
+      });
+    }
+    function showLevel(level) {
+      ['beginner','intermediate','advanced'].forEach(l => {
+        document.getElementById('level-' + l).classList.toggle('hidden', l !== level);
+        const tab = document.getElementById('tab-' + l);
+        tab.className = tab.className.replace(/tab-\w+/, l === level ? 'tab-active' : 'tab-inactive');
+      });
+    }
+    // Load CLAUDE.md preview
+    fetch('/starter-kit/CLAUDE.md')
+      .then(r => r.text())
+      .then(t => { const el = document.getElementById('claude-md-preview'); if(el) el.textContent = t; })
+      .catch(() => {});
+  </script>
+</body>
+</html>
