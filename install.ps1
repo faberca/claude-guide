@@ -20,11 +20,8 @@ if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
     Write-Host "Microsoft Store에서 '앱 설치 관리자'를 설치해주세요:" -ForegroundColor Yellow
     Write-Host "  https://apps.microsoft.com/detail/9NBLGGH4NNS1" -ForegroundColor White
     Write-Host ""
-    Read-Host "설치 후 Enter를 눌러 다시 시도하세요"
-    if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
-        Write-Host "[실패] winget을 찾을 수 없습니다. 수동 설치가 필요합니다." -ForegroundColor Red
-        exit 1
-    }
+    Write-Host "설치 후 PowerShell을 다시 열고 이 스크립트를 재실행하세요." -ForegroundColor Yellow
+    exit 1
 }
 Write-Host "[OK] winget 사용 가능" -ForegroundColor Green
 Write-Host ""

@@ -5,6 +5,7 @@
 $ErrorActionPreference = "Stop"
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $OutputEncoding = [System.Text.Encoding]::UTF8
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $baseUrl = "https://claude-guide-sandy.vercel.app/starter-kit"
 
 Write-Host ""

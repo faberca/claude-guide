@@ -44,7 +44,7 @@
   <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-black/[0.06]">
     <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
       <span class="font-semibold tracking-tight">Claude Code Guide</span>
-      <div class="flex gap-6 text-sm text-stone-500">
+      <div class="hidden md:flex gap-6 text-sm text-stone-500">
         <a href="#compare" class="hover:text-stone-900 transition">비교</a>
         <a href="#install" class="hover:text-stone-900 transition">설치</a>
         <a href="#first-use" class="hover:text-stone-900 transition">시작</a>
@@ -122,7 +122,10 @@
     <div class="max-w-5xl mx-auto px-6">
       <p class="text-sm font-medium text-amber-600 mb-2">Installation</p>
       <h2 class="text-3xl font-bold tracking-tight mb-3">원클릭 설치</h2>
-      <p class="text-stone-500 mb-10">PowerShell에 한 줄 붙여넣으면 Git, VSCode, Claude Code가 자동 설치됩니다.</p>
+      <p class="text-stone-500 mb-4">PowerShell에 한 줄 붙여넣으면 Git, VSCode, Claude Code가 자동 설치됩니다.</p>
+      <div class="surface-card px-5 py-3 mb-10 text-sm text-stone-600">
+        <strong class="text-amber-700">Pro 구독 필요:</strong> Claude Code는 <a href="https://claude.com/pricing" target="_blank" class="underline text-amber-700">Pro ($20/월)</a> 이상 계정이 필요합니다. 무료 플랜으로는 사용 불가.
+      </div>
 
       <!-- PS help toggle -->
       <details class="surface-card p-5 mb-6">
@@ -205,9 +208,10 @@
             <h3 class="font-semibold mb-1">Claude Code 실행</h3>
             <div class="code-block px-4 py-3 mt-2 flex justify-between items-center">
               <code class="text-amber-400 text-sm">claude</code>
-              <button onclick="copyText('claude')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+              <button onclick="copyText(event,'claude')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
             </div>
-            <p class="text-xs text-stone-400 mt-2">브라우저가 열려서 로그인 요청 &rarr; 로그인하면 자동 연결</p>
+            <p class="text-xs text-stone-400 mt-2">브라우저가 열려서 로그인 요청 &rarr; Pro 계정으로 로그인하면 자동 연결</p>
+            <p class="text-xs text-stone-400 mt-1">브라우저가 안 열리면 <kbd class="px-1 py-0.5 bg-stone-100 rounded text-xs">c</kbd> 키를 눌러 URL을 복사한 뒤 수동으로 열어주세요.</p>
           </div>
         </div>
 
@@ -218,15 +222,15 @@
             <div class="space-y-2 mt-3">
               <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
                 <code>이 폴더에 있는 파일들 설명해줘</code>
-                <button onclick="copyText('이 폴더에 있는 파일들 설명해줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+                <button onclick="copyText(event,'이 폴더에 있는 파일들 설명해줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
               </div>
               <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
                 <code>간단한 TODO 앱 만들어줘. HTML 파일 하나로.</code>
-                <button onclick="copyText('간단한 TODO 앱 만들어줘. HTML 파일 하나로.')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+                <button onclick="copyText(event,'간단한 TODO 앱 만들어줘. HTML 파일 하나로.')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
               </div>
               <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
                 <code>README.md 만들어줘. 이 프로젝트 설명하는 내용으로.</code>
-                <button onclick="copyText('README.md 만들어줘. 이 프로젝트 설명하는 내용으로.')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+                <button onclick="copyText(event,'README.md 만들어줘. 이 프로젝트 설명하는 내용으로.')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
               </div>
             </div>
           </div>
@@ -255,7 +259,7 @@
           <p class="text-sm text-stone-600 mb-3">프로젝트 루트에 CLAUDE.md를 두면 Claude가 매 대화마다 자동으로 읽습니다. 코드 스타일, 규칙, 워크플로우를 한 번 적어두면 매번 설명할 필요 없음.</p>
           <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
             <code class="text-amber-400">/init</code>
-            <button onclick="copyText('/init')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+            <button onclick="copyText(event,'/init')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
           </div>
           <p class="text-xs text-stone-400 mt-2">프로젝트를 분석해서 CLAUDE.md 초안을 자동 생성</p>
         </div>
@@ -274,11 +278,11 @@
           <div class="space-y-2">
             <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
               <code>이 프로젝트의 폴더 구조와 각 역할을 설명해줘</code>
-              <button onclick="copyText('이 프로젝트의 폴더 구조와 각 역할을 설명해줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+              <button onclick="copyText(event,'이 프로젝트의 폴더 구조와 각 역할을 설명해줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
             </div>
             <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
               <code>로그인 기능이 어떻게 구현되어 있는지 알려줘</code>
-              <button onclick="copyText('로그인 기능이 어떻게 구현되어 있는지 알려줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+              <button onclick="copyText(event,'로그인 기능이 어떻게 구현되어 있는지 알려줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
             </div>
           </div>
         </div>
@@ -346,7 +350,7 @@
           <p class="text-sm text-stone-600 mb-3">복잡한 조사는 서브에이전트에게 위임. 메인 대화의 컨텍스트를 깨끗하게 유지.</p>
           <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
             <code>서브에이전트를 써서 인증 시스템의 토큰 갱신 로직 조사해줘</code>
-            <button onclick="copyText('서브에이전트를 써서 인증 시스템의 토큰 갱신 로직 조사해줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+            <button onclick="copyText(event,'서브에이전트를 써서 인증 시스템의 토큰 갱신 로직 조사해줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
           </div>
           <p class="text-xs text-stone-400 mt-3">Writer/Reviewer 패턴: 세션 A에서 구현 &rarr; 세션 B에서 리뷰 &rarr; A에서 피드백 반영</p>
         </div>
@@ -364,7 +368,7 @@
           <p class="text-sm text-stone-600 mb-3">Hooks = Claude 행동에 자동 반응하는 스크립트. MCP = 외부 도구(Notion, DB, Figma) 연결.</p>
           <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
             <code>파일 수정할 때마다 eslint 자동 실행하는 hook 만들어줘</code>
-            <button onclick="copyText('파일 수정할 때마다 eslint 자동 실행하는 hook 만들어줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
+            <button onclick="copyText(event,'파일 수정할 때마다 eslint 자동 실행하는 hook 만들어줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
           </div>
         </div>
       </div>
@@ -381,7 +385,7 @@
       <div class="code-block p-6 mb-8">
         <div class="flex items-center justify-between mb-3">
           <span class="text-xs text-stone-500">프로젝트 폴더에서 실행</span>
-          <button onclick="copyText('irm https://claude-guide-sandy.vercel.app/starter-kit/setup.ps1 | iex')" id="copy-kit" class="copy-btn px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-xs font-medium rounded-lg">복사</button>
+          <button onclick="copyText(event,'irm https://claude-guide-sandy.vercel.app/starter-kit/setup.ps1 | iex')" id="copy-kit" class="copy-btn px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-xs font-medium rounded-lg">복사</button>
         </div>
         <code class="text-sm">irm https://claude-guide-sandy.vercel.app/starter-kit/setup.ps1 | iex</code>
       </div>
@@ -660,9 +664,9 @@
           <div class="font-semibold text-sm mb-1">인증 문제</div>
           <div class="text-xs text-stone-400">로그인 안 될 때</div>
         </a>
-        <a href="https://claude.ai/upgrade" target="_blank" class="card p-5 hover:border-amber-200">
-          <div class="font-semibold text-sm mb-1">Pro 업그레이드</div>
-          <div class="text-xs text-stone-400">Pro/Max 계정</div>
+        <a href="https://claude.com/pricing" target="_blank" class="card p-5 hover:border-amber-200">
+          <div class="font-semibold text-sm mb-1">요금제 안내</div>
+          <div class="text-xs text-stone-400">Pro/Max/Team 비교</div>
         </a>
       </div>
     </div>
@@ -733,9 +737,9 @@
   </footer>
 
   <script>
-    function copyText(text) {
+    function copyText(e, text) {
       navigator.clipboard.writeText(text).then(() => {
-        const btn = event.target;
+        const btn = e.target;
         const orig = btn.textContent;
         btn.textContent = '완료!';
         btn.classList.add('text-emerald-500');
