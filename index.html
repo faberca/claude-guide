@@ -583,6 +583,43 @@
           <p class="text-sm font-medium text-emerald-700">해결: "없으면 실수하나?" 기준으로 정리</p>
         </div>
       </div>
+
+      <!-- Writing-specific pitfalls -->
+      <div class="mt-10">
+        <h3 class="text-xl font-bold tracking-tight mb-6">소설·머미 작업할 때 특히 주의</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="surface-card p-6">
+            <div class="text-sm font-semibold text-red-600 mb-2">원고 통째로 던지기</div>
+            <p class="text-sm text-stone-500 mb-2">10만자를 한번에 &rarr; 컨텍스트 폭발 &rarr; 뒷부분 갈수록 앞 내용 까먹음</p>
+            <p class="text-sm font-medium text-emerald-700">해결: 챕터별로 나눠서 파일 저장 &rarr; "3장 읽고 피드백해줘"</p>
+          </div>
+          <div class="surface-card p-6">
+            <div class="text-sm font-semibold text-red-600 mb-2">"전체 피드백 줘"</div>
+            <p class="text-sm text-stone-500 mb-2">범위가 넓으면 "전반적으로 좋습니다" 같은 쓸모없는 답변</p>
+            <p class="text-sm font-medium text-emerald-700">해결: 관점 지정 &mdash; "복선 누락 찾아줘", "캐릭터 말투 일관성 체크해줘"</p>
+          </div>
+          <div class="surface-card p-6">
+            <div class="text-sm font-semibold text-red-600 mb-2">지어낸 역사를 그대로 채택</div>
+            <p class="text-sm text-stone-500 mb-2">"조선 정조 시대에 비소가 유행했다" &mdash; 그럴듯하지만 지어낸 것일 수 있음</p>
+            <p class="text-sm font-medium text-emerald-700">해결: "출처 URL 같이 달아줘" 습관. 근거 못 대면 지어낸 것.</p>
+          </div>
+          <div class="surface-card p-6">
+            <div class="text-sm font-semibold text-red-600 mb-2">세계관이 대화에만 존재</div>
+            <p class="text-sm text-stone-500 mb-2">설정을 채팅으로만 주고받음 &rarr; 세션 끝나면 전부 날아감</p>
+            <p class="text-sm font-medium text-emerald-700">해결: 설정집을 MD 파일로 &rarr; "world/인물.md 읽고 이 설정 기준으로 써줘"</p>
+          </div>
+          <div class="surface-card p-6">
+            <div class="text-sm font-semibold text-red-600 mb-2">수정을 말로만 받기</div>
+            <p class="text-sm text-stone-500 mb-2">"여기 이렇게 고치면 좋겠어요" &rarr; 내가 직접 옮겨야 함</p>
+            <p class="text-sm font-medium text-emerald-700">해결: "파일에 직접 고쳐줘" &mdash; Claude Code는 파일 수정이 됨</p>
+          </div>
+          <div class="surface-card p-6">
+            <div class="text-sm font-semibold text-red-600 mb-2">문체를 매번 다시 설명</div>
+            <p class="text-sm text-stone-500 mb-2">"내 문체는 짧은 문장 위주고..." 매 세션마다 반복</p>
+            <p class="text-sm font-medium text-emerald-700">해결: CLAUDE.md에 문체 규칙 적어두면 매번 자동 적용</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
