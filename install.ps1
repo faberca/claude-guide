@@ -1,5 +1,5 @@
 # Claude Code Windows 원클릭 설치 스크립트
-# 사용법: irm https://claude-guide.vercel.app/install.ps1 | iex
+# 사용법: irm https://claude-guide-sandy.vercel.app/install.ps1 | iex
 
 $ErrorActionPreference = "Stop"
 

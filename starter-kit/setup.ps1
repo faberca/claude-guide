@@ -1,9 +1,9 @@
 # Claude Code Starter Kit — 원클릭 세팅
 # 프로젝트 폴더에서 실행하면 끝. Claude가 알아서 잘 하게 됩니다.
-# irm https://claude-guide.vercel.app/starter-kit/setup.ps1 | iex
+# irm https://claude-guide-sandy.vercel.app/starter-kit/setup.ps1 | iex
 
 $ErrorActionPreference = "Stop"
-$baseUrl = "https://claude-guide.vercel.app/starter-kit"
+$baseUrl = "https://claude-guide-sandy.vercel.app/starter-kit"
 
 Write-Host ""
 Write-Host "  Claude Code Starter Kit" -ForegroundColor Cyan
