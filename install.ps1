@@ -103,7 +103,7 @@ Write-Host ""
 # 최종 확인
 $allGood = $true
 if (!(Get-Command git -ErrorAction SilentlyContinue)) {
-    Write-Host "  [!] Git을 찾을 수 없습니다 - 터미널을 재시작해보세요" -ForegroundColor Yellow
+    Write-Host "  [!] Git을 찾을 수 없습니다 - VSCode와 PowerShell을 재시작해보세요" -ForegroundColor Yellow
     $allGood = $false
 }
 if (!(Get-Command claude -ErrorAction SilentlyContinue)) {
@@ -118,9 +118,10 @@ if ($allGood) {
     Write-Host "  다음 단계:" -ForegroundColor White
     Write-Host "  1. VSCode를 완전히 종료 후 다시 엽니다" -ForegroundColor White
     Write-Host "     (이미 열려있으면 반드시 재시작!)" -ForegroundColor Yellow
-    Write-Host "  2. Ctrl+`` 로 터미널을 엽니다" -ForegroundColor White
-    Write-Host "  3. claude 를 입력합니다" -ForegroundColor Cyan
-    Write-Host "  4. 브라우저에서 로그인하면 끝!" -ForegroundColor White
+    Write-Host "  2. 탐색기에서 작업 폴더 우클릭 → 'Code로 열기'" -ForegroundColor White
+    Write-Host "  3. Ctrl+`` 로 터미널을 엽니다" -ForegroundColor White
+    Write-Host "  4. claude 를 입력합니다" -ForegroundColor Cyan
+    Write-Host "  5. 브라우저에서 로그인하면 끝!" -ForegroundColor White
     Write-Host "========================================" -ForegroundColor Cyan
 } else {
     Write-Host ""
