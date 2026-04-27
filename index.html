@@ -88,14 +88,13 @@
         <div class="surface-card p-8">
           <div class="text-sm font-medium text-stone-400 mb-4">웹 AI (ChatGPT / Gemini / Claude.ai)</div>
           <ul class="space-y-4 text-[15px] text-stone-600">
-            <li class="flex gap-3"><span class="text-stone-300 shrink-0">01</span> 파일을 직접 업로드해야 함</li>
-            <li class="flex gap-3"><span class="text-stone-300 shrink-0">02</span> 코드를 채팅에서 복사 → 수동 붙여넣기</li>
-            <li class="flex gap-3"><span class="text-stone-300 shrink-0">03</span> 실행/테스트 불가 (직접 해야 함)</li>
-            <li class="flex gap-3"><span class="text-stone-300 shrink-0">04</span> Git 연동 없음</li>
-            <li class="flex gap-3"><span class="text-stone-300 shrink-0">05</span> 파일 하나씩 왔다갔다</li>
-            <li class="flex gap-3"><span class="text-stone-300 shrink-0">06</span> 대화 길어지면 앞 내용 까먹음</li>
-            <li class="flex gap-3"><span class="text-stone-300 shrink-0">07</span> 매번 같은 규칙을 다시 설명해야 함</li>
-            <li class="flex gap-3"><span class="text-stone-300 shrink-0">08</span> 환각(hallucination) — 그럴듯하게 거짓말</li>
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">01</span> 파일을 일일이 업로드해야 함</li>
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">02</span> 결과물을 복사해서 수동으로 붙여넣기</li>
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">03</span> "이거 진짜 되는 건지" 직접 실행해봐야 앎</li>
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">04</span> 실수하면 되돌리기 어려움</li>
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">05</span> 대화 길어지면 앞에서 한 말 까먹음</li>
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">06</span> 매번 "내 스타일은 이래" 다시 설명</li>
+            <li class="flex gap-3"><span class="text-stone-300 shrink-0">07</span> 그럴듯하게 거짓말함 (환각)</li>
             <li class="flex gap-3 font-medium text-stone-800"><span class="text-stone-400 shrink-0">==</span> 사람이 일하고, AI가 조언</li>
           </ul>
         </div>
@@ -104,15 +103,14 @@
         <div class="card p-8 border-amber-200 bg-amber-50/30">
           <div class="text-sm font-medium text-amber-600 mb-4">Claude Code (VSCode + Terminal)</div>
           <ul class="space-y-4 text-[15px] text-stone-700">
-            <li class="flex gap-3"><span class="text-amber-400 shrink-0">01</span> <strong>프로젝트 전체를 직접 읽음</strong></li>
-            <li class="flex gap-3"><span class="text-amber-400 shrink-0">02</span> <strong>파일에 직접 쓰고 저장</strong></li>
-            <li class="flex gap-3"><span class="text-amber-400 shrink-0">03</span> <strong>터미널 명령어 직접 실행</strong></li>
-            <li class="flex gap-3"><span class="text-amber-400 shrink-0">04</span> <strong>커밋, PR, 브랜치 자동</strong></li>
-            <li class="flex gap-3"><span class="text-amber-400 shrink-0">05</span> <strong>수십 개 파일 동시 수정</strong></li>
-            <li class="flex gap-3"><span class="text-amber-400 shrink-0">06</span> <strong>컨텍스트 관리</strong> — 길어지면 자동 압축, 핸드오프</li>
-            <li class="flex gap-3"><span class="text-amber-400 shrink-0">07</span> <strong>CLAUDE.md</strong> — 규칙을 매 세션 자동으로 읽음</li>
-            <li class="flex gap-3"><span class="text-amber-400 shrink-0">08</span> <strong>환각 방지</strong> — 파일 직접 읽고 검증 후 답변</li>
-            <li class="flex gap-3 font-bold text-amber-700"><span class="text-amber-500 shrink-0">==</span> AI가 일하고, 사람이 방향 설정</li>
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">01</span> <strong>내 폴더 전체를 알아서 읽음</strong> — 업로드 필요 없음</li>
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">02</span> <strong>파일을 직접 만들고 수정</strong> — 복붙 안 해도 됨</li>
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">03</span> <strong>만든 걸 직접 실행하고 검증</strong> — 되는지 확인까지</li>
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">04</span> <strong>실수하면 되돌려줌</strong> — 버전 관리 자동</li>
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">05</span> <strong>대화 길어져도 핵심 유지</strong> — 컨텍스트 자동 관리</li>
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">06</span> <strong>내 취향/규칙을 기억</strong> — CLAUDE.md에 저장하면 매번 자동 적용</li>
+            <li class="flex gap-3"><span class="text-amber-400 shrink-0">07</span> <strong>거짓말 방지</strong> — 추측 안 하고 파일 직접 읽어서 확인</li>
+            <li class="flex gap-3 font-bold text-amber-700"><span class="text-amber-500 shrink-0">==</span> AI가 일하고, 사람이 방향만 잡아줌</li>
           </ul>
         </div>
       </div>
