@@ -116,15 +116,17 @@ if ($allGood) {
     Write-Host ""
     Write-Host "========================================" -ForegroundColor Cyan
     Write-Host "  다음 단계:" -ForegroundColor White
-    Write-Host "  1. VSCode를 엽니다" -ForegroundColor White
-    Write-Host "  2. Ctrl+` 로 터미널을 엽니다" -ForegroundColor White
+    Write-Host "  1. VSCode를 완전히 종료 후 다시 엽니다" -ForegroundColor White
+    Write-Host "     (이미 열려있으면 반드시 재시작!)" -ForegroundColor Yellow
+    Write-Host "  2. Ctrl+`` 로 터미널을 엽니다" -ForegroundColor White
     Write-Host "  3. claude 를 입력합니다" -ForegroundColor Cyan
     Write-Host "  4. 브라우저에서 로그인하면 끝!" -ForegroundColor White
     Write-Host "========================================" -ForegroundColor Cyan
 } else {
     Write-Host ""
     Write-Host "  일부 도구를 찾을 수 없습니다." -ForegroundColor Yellow
-    Write-Host "  PowerShell을 닫고 다시 열어보세요." -ForegroundColor Yellow
+    Write-Host "  VSCode가 열려있으면 완전히 종료 후 다시 여세요." -ForegroundColor Yellow
+    Write-Host "  PowerShell도 닫고 다시 열어보세요." -ForegroundColor Yellow
     Write-Host "  그래도 안 되면 PC를 재시작해보세요." -ForegroundColor Yellow
 }
 
