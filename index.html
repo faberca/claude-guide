@@ -123,6 +123,24 @@
       <p class="text-sm font-medium text-amber-600 mb-2">Installation</p>
       <h2 class="text-3xl font-bold tracking-tight mb-3">원클릭 설치</h2>
       <p class="text-stone-500 mb-4">PowerShell에 한 줄 붙여넣으면 Git, VSCode, Claude Code가 자동 설치됩니다.</p>
+
+      <!-- 보안 경고 -->
+      <div class="border border-red-200 bg-red-50 rounded-xl px-5 py-4 mb-4 text-sm">
+        <div class="flex items-start gap-3">
+          <span class="text-red-500 text-lg shrink-0">⚠️</span>
+          <div>
+            <p class="font-semibold text-red-700 mb-1">구글 검색 결과를 조심하세요</p>
+            <p class="text-red-600 mb-2">"Claude 설치", "Claude Code download" 같은 검색 결과 <strong>상단 광고</strong>에 공식 사이트를 사칭한 멀웨어 설치 페이지가 올라오는 사례가 있습니다. 설치 명령을 실행하는 순간 키체인·쿠키·SSH 키 등이 탈취됩니다.</p>
+            <p class="text-red-700 font-medium">공식 주소만 신뢰하세요:</p>
+            <ul class="text-red-600 text-xs mt-1 space-y-0.5">
+              <li>✅ <code class="bg-red-100 px-1 rounded">anthropic.com</code></li>
+              <li>✅ <code class="bg-red-100 px-1 rounded">claude.ai</code></li>
+              <li>❌ 그 외 도메인에서 오는 <code class="bg-red-100 px-1 rounded">curl ... | bash</code> 명령 — 절대 실행 금지</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <div class="surface-card px-5 py-3 mb-10 text-sm text-stone-600">
         <strong class="text-amber-700">Pro 구독 필요:</strong> Claude Code는 <a href="https://claude.com/pricing" target="_blank" class="underline text-amber-700">Pro ($20/월)</a> 이상 계정이 필요합니다. 무료 플랜으로는 사용 불가.
       </div>
