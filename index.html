@@ -66,9 +66,9 @@
         Claude Code는 내 컴퓨터에 설치해서 쓰는 AI입니다. 웹 채팅처럼 파일을 올리고 답을 복사해 붙일 필요 없이, 폴더 안의 파일을 직접 읽고 고칩니다.
       </p>
       <ul class="space-y-2 text-[15px] text-stone-600 mb-8">
-        <li><strong class="text-stone-800">파일을 직접 고칩니다.</strong> "이 글 다듬어줘"라고 하면 그 파일이 바로 바뀝니다.</li>
-        <li><strong class="text-stone-800">만든 것을 실행해 봅니다.</strong> 페이지를 열어 보고, 오류가 나면 다시 고칩니다.</li>
-        <li><strong class="text-stone-800">규칙을 한 번만 적으면 됩니다.</strong> 폴더의 CLAUDE.md를 대화마다 먼저 읽습니다.</li>
+        <li><strong class="text-stone-800">복사·붙여넣기가 없어집니다.</strong> 파일 20개를 고쳐도 요청 한 번이면 됩니다.</li>
+        <li><strong class="text-stone-800">바로 쓸 수 있는 결과를 받습니다.</strong> 만든 것을 직접 실행해 보고, 오류가 나면 스스로 고칩니다.</li>
+        <li><strong class="text-stone-800">같은 설명을 반복하지 않습니다.</strong> 규칙을 CLAUDE.md에 한 번 적으면 그 폴더에서는 매번 따릅니다.</li>
       </ul>
       <p class="text-sm text-stone-500 mb-8">OpenAI의 <a href="https://developers.openai.com/codex/cli/" target="_blank" rel="noopener" class="underline">Codex CLI</a>도 같은 방식입니다. 규칙 파일 이름이 AGENTS.md인 것처럼 세부만 다릅니다. 이 가이드는 Claude Code 기준입니다.</p>
       <div class="flex flex-wrap gap-3">
@@ -83,17 +83,15 @@
     <div class="max-w-5xl mx-auto px-6">
       <h2 class="text-3xl font-bold tracking-tight mb-10">웹 채팅과 무엇이 다른가요?</h2>
 
-      <div class="overflow-x-auto"><table class="w-full text-[15px] min-w-[560px]">
-<thead><tr class="text-left text-xs text-stone-400"><th class="py-2 pr-4 font-medium"></th><th class="py-2 pr-4 font-medium">웹 채팅 (ChatGPT·Claude.ai 등)</th><th class="py-2 font-medium text-amber-700">Claude Code (설치형)</th></tr></thead>
+      <div class="overflow-x-auto"><table class="w-full text-[15px] min-w-[600px]">
+<thead><tr class="text-left text-xs text-stone-400"><th class="py-2 pr-4 font-medium w-[26%]">얻는 것</th><th class="py-2 pr-4 font-medium">웹 채팅 (ChatGPT·Claude.ai 등)</th><th class="py-2 font-medium text-amber-700">Claude Code</th></tr></thead>
 <tbody>
-<tr class="border-t border-black/[0.06]"><td class="py-3 pr-4 align-top font-medium text-stone-800 whitespace-nowrap">자료 넣기</td><td class="py-3 pr-4 align-top text-stone-500">파일을 올리거나 붙여넣기</td><td class="py-3 align-top text-stone-700">폴더를 열면 안의 파일을 직접 읽음</td></tr>
-<tr class="border-t border-black/[0.06]"><td class="py-3 pr-4 align-top font-medium text-stone-800 whitespace-nowrap">결과 받기</td><td class="py-3 pr-4 align-top text-stone-500">답을 복사해 내 파일에 붙이기</td><td class="py-3 align-top text-stone-700">파일을 직접 만들고 고침</td></tr>
-<tr class="border-t border-black/[0.06]"><td class="py-3 pr-4 align-top font-medium text-stone-800 whitespace-nowrap">됐는지 확인</td><td class="py-3 pr-4 align-top text-stone-500">내가 열어 보고 다시 질문</td><td class="py-3 align-top text-stone-700">직접 실행해 보고, 틀리면 다시 고침</td></tr>
-<tr class="border-t border-black/[0.06]"><td class="py-3 pr-4 align-top font-medium text-stone-800 whitespace-nowrap">매번 하는 설명</td><td class="py-3 pr-4 align-top text-stone-500">앱의 맞춤 지침에 저장</td><td class="py-3 align-top text-stone-700">폴더의 CLAUDE.md를 대화마다 읽음</td></tr>
-<tr class="border-t border-black/[0.06]"><td class="py-3 pr-4 align-top font-medium text-stone-800 whitespace-nowrap">잘못 고쳤을 때</td><td class="py-3 pr-4 align-top text-stone-500">해당 없음 (내 파일은 그대로)</td><td class="py-3 align-top text-stone-700"><code>/rewind</code>로 되돌림. 명령으로 바뀐 파일은 Git으로</td></tr>
-<tr class="border-t border-black/[0.06]"><td class="py-3 pr-4 align-top font-medium text-stone-800 whitespace-nowrap">잘 맞는 일</td><td class="py-3 pr-4 align-top text-stone-500">질문, 초안, 자료 요약</td><td class="py-3 align-top text-stone-700">파일이 여러 개인 일: 사이트, 원고 묶음, 데이터 정리</td></tr>
-<tr class="border-t border-black/[0.06]"><td class="py-3 pr-4 align-top font-medium text-stone-800 whitespace-nowrap">주의할 점</td><td class="py-3 pr-4 align-top text-stone-500">—</td><td class="py-3 align-top text-stone-700">내 파일을 실제로 바꿈. 중요한 폴더는 복사본에서 시작</td></tr>
+<tr class="border-t border-black/[0.06]"><td class="py-4 pr-4 align-top font-semibold text-stone-900">복사·붙여넣기 시간이 사라집니다</td><td class="py-4 pr-4 align-top text-stone-500">글 20개를 올리고, 고친 답을 파일마다 복사해 붙입니다.</td><td class="py-4 align-top text-stone-700">"이 폴더 글 전부 맞춤법 고쳐줘" 한 줄이면 파일이 고쳐져 있습니다.</td></tr>
+<tr class="border-t border-black/[0.06]"><td class="py-4 pr-4 align-top font-semibold text-stone-900">바로 쓸 수 있는 결과를 받습니다</td><td class="py-4 pr-4 align-top text-stone-500">받은 코드를 붙였는데 안 되면, 오류를 복사해 다시 묻기를 반복합니다.</td><td class="py-4 align-top text-stone-700">직접 실행해 보고 오류가 나면 스스로 고칩니다. 나는 결과만 확인합니다.</td></tr>
+<tr class="border-t border-black/[0.06]"><td class="py-4 pr-4 align-top font-semibold text-stone-900">같은 설명을 반복하지 않습니다</td><td class="py-4 pr-4 align-top text-stone-500">작업마다 "존댓말로, 표로" 같은 조건을 다시 붙이게 됩니다.</td><td class="py-4 align-top text-stone-700">CLAUDE.md에 한 번 적으면 그 폴더 작업은 매번 그 방식으로 합니다.</td></tr>
+<tr class="border-t border-black/[0.06]"><td class="py-4 pr-4 align-top font-semibold text-stone-900">다음에 이어서 할 수 있습니다</td><td class="py-4 pr-4 align-top text-stone-500">결과가 대화창에만 남아, 나중에 찾아서 다시 옮겨야 합니다.</td><td class="py-4 align-top text-stone-700">결과가 내 폴더에 파일로 남아, 다음 날 그 파일부터 이어갑니다.</td></tr>
 </tbody></table></div>
+      <p class="text-sm text-stone-500 mt-4">대신 내 파일을 실제로 바꿉니다. 중요한 폴더는 복사본에서 시작하세요. Claude가 고친 파일은 <code>/rewind</code>로 되돌릴 수 있습니다.</p>
 
       <div class="mt-8 flex flex-wrap items-center gap-4">
         <a href="/design-skills/" class="px-6 py-3 bg-stone-900 text-white text-sm font-medium rounded-lg hover:bg-stone-800 transition">디자인스킬 보기 →</a>
