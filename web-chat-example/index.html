@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>웹 채팅 리서치 예시</title>
+<meta name="description" content="웹 채팅으로 주식 리서치를 물어봤을 때의 예시 화면. 설치형 AI 보고서와 비교용.">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<style>
+  :root { --bg:#FAFAF9; --panel:#FFFFFF; --line:rgba(0,0,0,0.08); --text:#1C1917; --muted:#78716C; --accent:#D97706; --user:#F1EFEA; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:'Pretendard Variable',system-ui,sans-serif; line-height:1.65; }
+  .note { max-width:760px; margin:24px auto 0; padding:12px 16px; border:1px solid #FCD9A8; background:#FFF8EC; border-radius:12px; font-size:14px; color:#7C4A03; }
+  .note a { color:#B45309; }
+  .app { max-width:760px; margin:16px auto 40px; background:var(--panel); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+  .bar { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid var(--line); font-size:14px; color:var(--muted); }
+  .bar b { color:var(--text); font-weight:600; }
+  .chat { padding:24px 16px; display:flex; flex-direction:column; gap:20px; }
+  .u { align-self:flex-end; max-width:80%; background:var(--user); padding:10px 14px; border-radius:16px 16px 4px 16px; font-size:15px; }
+  .a { display:flex; gap:12px; font-size:15px; }
+  .dot { width:28px; height:28px; border-radius:50%; background:var(--accent); flex:none; margin-top:2px; }
+  .a p { margin:0 0 10px; } .a ul { margin:0 0 10px; padding-left:20px; }
+  table { border-collapse:collapse; font-size:14px; margin:4px 0 10px; width:100%; }
+  th, td { border:1px solid var(--line); padding:6px 10px; text-align:left; vertical-align:top; }
+  th { background:#F7F6F3; font-weight:600; }
+  .input { margin:0 16px 16px; border:1px solid var(--line); border-radius:14px; padding:12px 14px; color:#A8A29E; font-size:15px; }
+  .compare { max-width:760px; margin:0 auto 48px; }
+  .compare h2 { font-size:20px; margin:0 0 12px; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .box { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; font-size:14px; }
+  .box h3 { margin:0 0 8px; font-size:15px; }
+  .box.cli { border-color:#FCD9A8; }
+  .box ul { margin:0; padding-left:18px; }
+  .box a { color:#B45309; font-weight:600; }
+  @media (max-width:640px) { .note,.app,.compare { margin-left:16px; margin-right:16px; } .row { grid-template-columns:1fr; } .u { max-width:90%; } }
+</style>
+</head>
+<body>
+  <div class="note">설명을 위해 만든 예시 화면입니다. 실제 대화 기록이 아니며, 웹 채팅에서 흔히 받는 답의 형태를 보여줍니다. <a href="/#compare">가이드로 돌아가기</a></div>
+
+  <div class="app">
+    <div class="bar"><b>웹 채팅</b><span>새 대화</span></div>
+    <div class="chat">
+      <div class="u">닌텐도 주식 지금 사도 될까? 리서치해줘</div>
+      <div class="a"><div class="dot"></div><div>
+        <p>닌텐도 투자를 판단할 때 볼 만한 점을 정리해 드릴게요. 다만 저는 실시간 주가와 최신 공시를 확인할 수 없어서, 아래 내용은 일반적인 관점입니다.</p>
+        <p><b>긍정적인 요소</b></p>
+        <ul><li>Switch 2 출시로 새 콘솔 사이클이 시작됐습니다.</li><li>마리오·젤다·포켓몬 같은 강력한 IP가 있습니다.</li><li>영화·테마파크 등 IP 사업이 넓어지고 있습니다.</li></ul>
+        <p><b>주의할 요소</b></p>
+        <ul><li>콘솔 판매는 대작 출시 시기에 따라 크게 출렁입니다.</li><li>부품 가격과 관세가 이익률에 영향을 줄 수 있습니다.</li><li>환율 변동의 영향을 받습니다.</li></ul>
+        <p>최신 주가, 실적 발표, 애널리스트 의견을 직접 확인하신 뒤 판단하시길 권합니다.</p>
+      </div></div>
+
+      <div class="u">표로 정리해줘</div>
+      <div class="a"><div class="dot"></div><div>
+        <table><tr><th>구분</th><th>내용</th></tr>
+        <tr><td>강점</td><td>Switch 2, 강력한 IP, IP 사업 확장</td></tr>
+        <tr><td>위험</td><td>대작 출시 의존, 부품 가격·관세, 환율</td></tr>
+        <tr><td>확인할 것</td><td>최신 주가, 실적, 애널리스트 의견</td></tr></table>
+      </div></div>
+
+      <div class="u">다음 달 실적 나오면 이거 업데이트해줘</div>
+      <div class="a"><div class="dot"></div><div>
+        <p>실적이 나오면 발표 자료나 기사 내용을 새 대화에 붙여 주세요. 그 내용을 바탕으로 다시 정리해 드릴게요.</p>
+      </div></div>
+    </div>
+    <div class="input">메시지를 입력하세요</div>
+  </div>
+
+  <div class="compare">
+    <h2>같은 질문을 설치형 AI에 맡기면</h2>
+    <div class="row">
+      <div class="box">
+        <h3>웹 채팅</h3>
+        <ul>
+          <li>답 몇 문단과 짧은 표 하나</li>
+          <li>숫자 확인은 "직접 하세요"로 내게 넘어옴</li>
+          <li>결과는 대화창에만 남음</li>
+          <li>갱신하려면 자료를 다시 모아 붙여 넣기</li>
+        </ul>
+      </div>
+      <div class="box cli">
+        <h3>설치형 AI (Claude Code·Codex)</h3>
+        <ul>
+          <li>28개 절, 표 46개, 차트 30개짜리 보고서</li>
+          <li>공시·주가를 찾아 출처 42개와 숫자를 대조</li>
+          <li>결과가 파일로 남아 링크 하나로 공유할 수 있음</li>
+          <li>실적이 나오면 그 파일에서 바뀐 부분만 고침</li>
+        </ul>
+        <p style="margin:12px 0 0"><a href="https://jerrynews.vercel.app/research-html/nintendo_deep_dive_20260521/index.html" target="_blank" rel="noopener">닌텐도 딥다이브 보기 &rarr;</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
