@@ -1,6 +1,6 @@
-# Claude Code Starter Kit — 원클릭 세팅
-# 프로젝트 폴더에서 실행하면 끝. Claude가 알아서 잘 하게 됩니다.
-# irm https://claude-guide-sandy.vercel.app/starter-kit/setup.ps1 | iex
+# Claude Code Starter Kit — 프로젝트 지침 추가
+# 내용을 확인한 뒤 프로젝트 폴더에서 실행하세요. 기존 파일은 보존합니다.
+# 기존 설정과 새 지침의 충돌은 별도로 비교하세요.
 
 $ErrorActionPreference = "Stop"
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -13,7 +13,7 @@ Write-Host "  Claude Code Starter Kit" -ForegroundColor Cyan
 Write-Host "  ======================" -ForegroundColor DarkGray
 Write-Host ""
 
-# --- CLAUDE.md (올인원 프로젝트 규칙) ---
+# --- CLAUDE.md (짧은 공통 지침) ---
 if (Test-Path "CLAUDE.md") {
     Write-Host "  [있음] CLAUDE.md" -ForegroundColor DarkGray
 } else {
@@ -21,15 +21,15 @@ if (Test-Path "CLAUDE.md") {
     Write-Host "  [설치] CLAUDE.md" -ForegroundColor Green
 }
 
-# --- .claude/rules/ (행동 규칙) ---
-$rules = @("context-management.md", "verification.md", "code-accuracy.md", "self-improving.md")
-New-Item -ItemType Directory -Path ".claude/rules" -Force | Out-Null
-foreach ($r in $rules) {
-    if (!(Test-Path ".claude/rules/$r")) {
-        Invoke-WebRequest "$baseUrl/rules/$r" -OutFile ".claude/rules/$r"
-        Write-Host "  [설치] .claude/rules/$r" -ForegroundColor Green
-    }
+# --- 상세 절차: 필요할 때만 읽는 참고자료 ---
+New-Item -ItemType Directory -Path ".claude/references" -Force | Out-Null
+if (!(Test-Path ".claude/references/guide-workflows.md")) {
+    Invoke-WebRequest "$baseUrl/references/guide-workflows.md" -OutFile ".claude/references/guide-workflows.md"
+    Write-Host "  [설치] .claude/references/guide-workflows.md" -ForegroundColor Green
+} else {
+    Write-Host "  [보존] .claude/references/guide-workflows.md" -ForegroundColor DarkGray
 }
+# 기존 .claude/rules 파일은 수정하거나 삭제하지 않습니다.
 
 # --- .claude/skills/ (유틸 스킬) ---
 $skills = @("commit-flow", "review", "explain")
@@ -42,11 +42,11 @@ foreach ($s in $skills) {
 }
 
 Write-Host ""
-Write-Host "  완료. 이제 claude 를 실행하세요." -ForegroundColor White
+Write-Host "  파일 준비 완료. 새 Claude Code 세션에서 지침과 작은 작업 결과를 확인하세요." -ForegroundColor White
 Write-Host ""
-Write-Host "  다음 한마디면 프로젝트에 맞게 자동 커스터마이즈됩니다:" -ForegroundColor Yellow
+Write-Host "  기존 지침과 중복되는 규칙이 있다면 다음처럼 요청하세요:" -ForegroundColor Yellow
 Write-Host ""
-Write-Host '  CLAUDE.md를 이 프로젝트에 맞게 수정해줘.' -ForegroundColor Cyan
-Write-Host '  프로젝트 구조를 파악하고, 불필요한 규칙은 빼고,' -ForegroundColor Cyan
-Write-Host '  이 프로젝트에 필요한 규칙을 추가해줘.' -ForegroundColor Cyan
+Write-Host '  CLAUDE.md와 기존 rules를 먼저 읽고 중복과 충돌을 비교해줘.' -ForegroundColor Cyan
+Write-Host '  기존 지침은 보존하고 필요한 변경을 설명한 뒤,' -ForegroundColor Cyan
+Write-Host '  승인된 범위에서 반영하고 실제 적용을 확인해줘.' -ForegroundColor Cyan
 Write-Host ""
