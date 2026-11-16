@@ -61,7 +61,7 @@
   <!-- Hero -->
   <header class="max-w-5xl mx-auto px-6 pt-20 pb-12 fade-in">
     <div class="max-w-2xl">
-      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-5">Claude Code 설치 가이드</h1>
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-5"><span class="text-amber-600">Claude Code</span> 설치 가이드</h1>
       <p class="text-lg text-stone-600 leading-relaxed mb-6">
         Claude Code는 내 컴퓨터에 설치해서 쓰는 AI입니다. 웹 채팅처럼 파일을 올리고 답을 복사해 붙일 필요 없이, 폴더 안의 파일을 직접 읽고 고칩니다.
       </p>
@@ -81,6 +81,7 @@
   <!-- Compare -->
   <section id="compare" class="section-gap">
     <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-semibold text-amber-600 mb-2">왜 설치형인가</p>
       <h2 class="text-3xl font-bold tracking-tight mb-10">웹 채팅과 무엇이 다른가요?</h2>
 
       <div class="overflow-x-auto"><table class="w-full text-[15px] min-w-[600px]">
@@ -103,8 +104,9 @@
   <!-- Install -->
   <section id="install" class="section-gap bg-white border-y border-black/[0.06]">
     <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-semibold text-amber-600 mb-2">1단계 · 설치</p>
       <h2 class="text-3xl font-bold tracking-tight mb-3">설치 (Windows)</h2>
-      <p class="text-stone-500 mb-4">PowerShell에 Anthropic 공식 설치 명령 한 줄을 붙여넣으면 Claude Code가 설치되고, 이후 자동으로 업데이트됩니다.</p>
+      <p class="text-stone-500 mb-4">명령 한 줄이면 설치가 끝나고, 업데이트는 이후 알아서 됩니다. PowerShell에 아래 Anthropic 공식 명령을 붙여넣으세요.</p>
 
       <!-- 보안 경고 -->
       <div class="border border-red-200 bg-red-50 rounded-xl px-5 py-4 mb-4 text-sm">
@@ -150,7 +152,7 @@
       <p class="text-xs text-stone-400 mt-3">설치가 끝나면 PowerShell을 닫았다 다시 열고 <code>claude --version</code>으로 확인하세요. 관리자 권한은 필요 없습니다.</p>
 
       <div class="surface-card px-5 py-4 mt-4 text-sm text-stone-600">
-        <strong class="text-stone-800">터미널이 부담되면:</strong> <a href="https://code.claude.com/docs/en/desktop" target="_blank" class="underline text-amber-700">Claude 데스크톱 앱</a>을 설치하고 <strong>Code</strong> 탭을 여세요. 명령어 없이 폴더를 골라 같은 Claude Code를 씁니다. 이 가이드의 나머지 설명은 VSCode 기준입니다.
+        <strong class="text-stone-800">터미널이 부담되면:</strong> <a href="https://code.claude.com/docs/en/desktop" target="_blank" class="underline text-amber-700">Claude 데스크톱 앱</a>을 설치하고 <strong>Code</strong> 탭을 여세요. 명령어를 몰라도 폴더만 고르면 같은 Claude Code를 씁니다. 이 가이드의 나머지 설명은 VSCode 기준입니다.
       </div>
 
       <div class="grid md:grid-cols-3 gap-4 mt-8">
@@ -186,8 +188,9 @@
   <!-- First Use -->
   <section id="first-use" class="section-gap">
     <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-semibold text-amber-600 mb-2">2단계 · 첫 사용</p>
       <h2 class="text-3xl font-bold tracking-tight mb-3">설치 후 처음 해볼 일</h2>
-      <p class="text-stone-500 mb-10">아래 순서대로 하면 됩니다.</p>
+      <p class="text-stone-500 mb-10">이 4단계면 내 폴더에서 첫 결과물을 직접 확인할 수 있습니다.</p>
 
       <div class="space-y-4">
         <div class="card p-6 flex gap-5 items-start">
@@ -252,8 +255,9 @@
   <!-- Level Up -->
   <section id="level-up" class="section-gap bg-white border-y border-black/[0.06]">
     <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-semibold text-amber-600 mb-2">3단계 · 내 방식으로 맞추기</p>
       <h2 class="text-3xl font-bold tracking-tight mb-3">내 지침과 스킬 만들기</h2>
-      <p class="text-stone-500 mb-8">앱에서는 짧은 지침부터, 반복 작업은 스킬로 나누세요.</p>
+      <p class="text-stone-500 mb-8">한 번 적어두면 같은 설명을 매번 하지 않아도 됩니다. 앱에서는 짧은 지침부터, 반복 작업은 스킬로 나누세요.</p>
 
       <div class="guide-builder" id="instruction-builder">
         <div class="guide-heading"><span class="guide-step">01</span><div><h3>어디서 사용하나요?</h3><p>앱마다 지침을 넣는 곳이 달라요. 지금 쓰는 화면을 골라주세요.</p></div></div>
@@ -293,8 +297,8 @@
       <!-- Beginner -->
       <div id="level-beginner" class="space-y-4">
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">CLAUDE.md 만들기</div>
-          <p class="text-sm text-stone-600 mb-3">Claude Code는 작업 프로젝트의 CLAUDE.md를 지침으로 읽습니다. 기존 파일을 먼저 확인하고 공통 규칙만 짧게 적으세요. 일반 채팅 앱은 위 설정란을 사용하세요.</p>
+                    <div class="prompt-tag text-amber-600 font-semibold mb-3">설명 반복 줄이기 · CLAUDE.md</div>
+<p class="text-sm text-stone-600 mb-3">"한국어로", "결과는 파일로"처럼 매번 하던 설명을 한 번만 적으면 됩니다. 기존 CLAUDE.md가 있으면 먼저 확인하고 공통 규칙만 짧게 두세요.</p>
           <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
             <code class="text-amber-400">/init</code>
             <button onclick="copyText(event,'/init')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
@@ -303,16 +307,16 @@
         </div>
 
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">검증 기준 주기 (가장 중요)</div>
-          <p class="text-sm text-stone-600 mb-3">Claude는 "다 된 것 같으면" 멈춥니다. 통과·실패가 나오는 검사(테스트, 빌드, 비교 스크립트)를 주면 고치고 다시 돌리기를 스스로 반복합니다. 검사가 없으면 사람이 테스트 역할을 하게 됩니다.</p>
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">내가 테스트하지 않기 · 검사 기준 주기 (가장 중요)</div>
+          <p class="text-sm text-stone-600 mb-3">통과·실패가 나오는 검사(테스트, 빌드, 비교 스크립트)를 같이 주면, Claude가 고치고 다시 돌리기를 스스로 반복합니다. 내가 하나씩 확인해 줄 일이 줄어듭니다. 검사가 없으면 "다 된 것 같다"에서 멈춥니다.</p>
           <div class="code-block px-4 py-3 text-sm">
             <code>validateEmail 함수 만들어줘. test@example.com은 true, invalid는 false로. <span class="text-amber-400">테스트도 만들고 실행해봐.</span></code>
           </div>
         </div>
 
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">코드베이스 질문하기</div>
-          <p class="text-sm text-stone-600 mb-3">새 프로젝트에 투입됐을 때, 선배한테 물어보듯이 질문하세요.</p>
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">남의 코드 빨리 파악하기</div>
+          <p class="text-sm text-stone-600 mb-3">새 프로젝트를 맡아도 파일을 하나씩 열어 볼 필요가 없습니다. 선배에게 묻듯 질문하세요.</p>
           <div class="space-y-2">
             <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
               <code>이 프로젝트의 폴더 구조와 각 역할을 설명해줘</code>
@@ -326,8 +330,8 @@
         </div>
 
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">작업 도중 방향 잡기</div>
-          <p class="text-sm text-stone-600 mb-3">설정보다 효과가 큰 습관입니다. 시작하고 첫 1분은 지켜보세요.</p>
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">헛수고 줄이기 · 작업 중 방향 잡기</div>
+          <p class="text-sm text-stone-600 mb-3">엉뚱한 방향으로 한참 가기 전에 멈출 수 있습니다. 시작하고 첫 1분은 지켜보세요.</p>
           <div class="grid md:grid-cols-3 gap-2">
             <div class="code-block-light px-4 py-3 text-sm"><span class="text-stone-400 text-xs">엉뚱한 쪽으로 가면</span><br><code class="text-stone-800 font-semibold">Esc</code><br><span class="text-xs text-stone-500">멈추고 바로 다시 지시. 한 일은 남음</span></div>
             <div class="code-block-light px-4 py-3 text-sm"><span class="text-stone-400 text-xs">시도를 되돌리려면</span><br><code class="text-stone-800 font-semibold">/rewind</code><br><span class="text-xs text-stone-500">빈 입력창에서 Esc 두 번도 같음</span></div>
@@ -339,8 +343,8 @@
       <!-- Intermediate -->
       <div id="level-intermediate" class="space-y-4 hidden">
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">Plan Mode: 탐색 &rarr; 계획 &rarr; 실행</div>
-          <p class="text-sm text-stone-600 mb-4">큰 작업은 바로 코딩하지 말고, Plan Mode에서 먼저 파악하세요. <code>/plan</code>으로도 들어갑니다.</p>
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">처음부터 다시 하지 않기 · Plan Mode</div>
+          <p class="text-sm text-stone-600 mb-4">큰 작업은 계획을 먼저 보고 승인하세요. 다 만든 뒤에 방향이 틀린 걸 알고 처음부터 다시 하는 일이 줄어듭니다. <kbd>Shift+Tab</kbd>이나 <code>/plan</code>으로 들어갑니다.</p>
           <div class="space-y-2">
             <div class="code-block px-4 py-3 text-sm"><span class="text-stone-500">// Plan Mode (Shift+Tab 또는 /plan)</span><br><code>src/auth 읽고 세션 관리가 어떻게 되는지 파악해줘</code></div>
             <div class="code-block px-4 py-3 text-sm"><span class="text-stone-500">// Plan Mode</span><br><code>Google OAuth 추가하려면 어떤 파일을 바꿔야 해? 계획 세워줘</code></div>
@@ -349,8 +353,8 @@
         </div>
 
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">컨텍스트 관리</div>
-          <p class="text-sm text-stone-600 mb-4">지금 모델은 100만 토큰을 담고, 넘치기 전에 자동으로 압축해서 공간이 모자랄 일은 드뭅니다. 그래도 주제가 바뀌면 <code>/clear</code>가 좋습니다. 답이 선명해지고 비용이 줄어요.</p>
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">답 선명하게 · 대화 정리</div>
+          <p class="text-sm text-stone-600 mb-4">주제가 바뀔 때 <code>/clear</code>로 새로 시작하면 답이 선명해지고 비용이 줄어듭니다. 대화가 길어지면 자동으로 압축되니 공간 걱정은 하지 않아도 됩니다.</p>
           <div class="grid md:grid-cols-2 gap-2">
             <div class="code-block-light px-4 py-3 text-sm"><span class="text-stone-400 text-xs">주제 전환</span><br><code class="text-stone-800 font-semibold">/clear</code></div>
             <div class="code-block-light px-4 py-3 text-sm"><span class="text-stone-400 text-xs">대화 압축</span><br><code class="text-stone-800 font-semibold">/compact API 변경에 집중</code></div>
@@ -361,8 +365,8 @@
         </div>
 
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">인터뷰 시키기</div>
-          <p class="text-sm text-stone-600 mb-3">큰 기능을 만들 때, Claude에게 먼저 질문하게 하세요. 놓치기 쉬운 엣지케이스를 잡아줍니다.</p>
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">빠진 요구사항 미리 잡기 · 인터뷰 시키기</div>
+          <p class="text-sm text-stone-600 mb-3">큰 기능은 만들기 전에 Claude가 먼저 질문하게 하세요. 다 만든 뒤에 "이런 경우는?"이 나와 다시 고치는 일이 줄어듭니다.</p>
           <div class="code-block px-4 py-3 text-sm">
             <code>[기능 설명] 만들고 싶어. 먼저 나한테 질문해봐.<br>기술 구현, UX, 엣지케이스, 트레이드오프를 파고들어.<br>다 끝나면 SPEC.md로 정리해줘.</code>
           </div>
@@ -373,8 +377,8 @@
       <!-- Advanced -->
       <div id="level-advanced" class="space-y-4 hidden">
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">커스텀 스킬 만들기</div>
-          <p class="text-sm text-stone-600 mb-3">반복 워크플로우를 <code class="text-amber-700 bg-amber-50 px-1 rounded">/스킬이름</code>으로 즉시 실행. .claude/skills/에 SKILL.md 파일 추가.</p>
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">반복 작업을 한 줄로 · 스킬</div>
+          <p class="text-sm text-stone-600 mb-3">매주 하는 절차를 매번 설명하지 않고 <code class="text-amber-700 bg-amber-50 px-1 rounded">/스킬이름</code> 한 줄로 실행합니다. .claude/skills/ 아래에 SKILL.md를 만들면 됩니다.</p>
           <div class="code-block px-4 py-3 text-sm">
             <span class="text-stone-500"># .claude/skills/fix-issue/SKILL.md</span><br>
             <span class="text-amber-400">---</span><br>
@@ -387,8 +391,8 @@
         </div>
 
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">행동 규칙 (.claude/rules/)</div>
-          <p class="text-sm text-stone-600 mb-3">Claude Code의 rules/에는 주제별 규칙을 둘 수 있습니다. 규칙을 추가한 뒤 작은 작업으로 실제 반영을 확인하세요.</p>
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">규칙 찾기 쉽게 · .claude/rules/</div>
+          <p class="text-sm text-stone-600 mb-3">CLAUDE.md가 길어지면 주제별 파일로 나눠 찾고 고치기 쉽게 만듭니다. 추가한 뒤 작은 작업으로 실제로 따르는지 확인하세요.</p>
           <div class="code-block px-4 py-3 text-sm">
             <span class="text-stone-500"># .claude/rules/verification.md</span><br>
             <code>작업 완료 시 반드시 보고:<br>- 변경 파일 목록<br>- 실행한 검증 명령 + 출력<br>- 수치 증거<br>- "잘 됩니다" 같은 증거 없는 보고 금지</code>
@@ -396,8 +400,8 @@
         </div>
 
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">서브에이전트 & 병렬 세션</div>
-          <p class="text-sm text-stone-600 mb-3">서로 독립된 일을 동시에 돌리거나, 긴 출력을 따로 떼거나, 내 생각을 모르는 눈으로 검토받을 때 씁니다. 같은 일을 넘긴다고 답이 좋아지지는 않고 토큰은 더 듭니다.</p>
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">기다리는 시간 줄이기 · 서브에이전트</div>
+          <p class="text-sm text-stone-600 mb-3">관계없는 일을 동시에 돌려 기다리는 시간을 줄입니다. 긴 조사를 따로 떼어 본 대화를 깔끔하게 두거나, 내 생각을 모르는 눈으로 검토받을 때도 씁니다. 같은 일을 넘긴다고 답이 좋아지지는 않고 비용은 더 듭니다.</p>
           <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
             <code>서브에이전트를 써서 인증 시스템의 토큰 갱신 로직 조사해줘</code>
             <button onclick="copyText(event,'서브에이전트를 써서 인증 시스템의 토큰 갱신 로직 조사해줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
@@ -406,15 +410,15 @@
         </div>
 
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">스크립트에서 한 번 실행</div>
-          <p class="text-sm text-stone-600 mb-3"><code>-p</code>는 대화 없이 한 번 실행하고 끝냅니다. 허용할 도구를 좁혀서 쓰세요.</p>
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">예약 작업에 넣기 · -p</div>
+          <p class="text-sm text-stone-600 mb-3"><code>-p</code>를 붙이면 대화 없이 한 번 실행하고 끝나서, 스크립트나 예약 작업에 넣을 수 있습니다. 허용할 도구는 좁혀서 쓰세요.</p>
           <div class="code-block px-4 py-3 text-sm"><code>claude -p "README.md 요약해줘" --allowedTools "Read"</code></div>
           <p class="text-xs text-stone-400 mt-2">자동 실행은 내용을 아는 폴더에서만 쓰세요. <code>-p</code>는 그 폴더의 hook·MCP 설정을 신뢰 확인 없이 실행합니다.</p>
         </div>
 
         <div class="card p-6">
-          <div class="prompt-tag text-amber-600 font-semibold mb-3">Hooks · MCP · Plugin</div>
-          <p class="text-sm text-stone-600 mb-3">Hooks = Claude 행동에 자동 반응하는 스크립트. MCP = 외부 도구(Notion, DB, Figma) 연결. Plugin = 스킬·hook·MCP 묶음으로 <code>/plugin</code>에서 설치합니다. 플러그인은 내 권한으로 코드를 실행하니 출처를 확인하고 필요한 것만 켜세요.</p>
+          <div class="prompt-tag text-amber-600 font-semibold mb-3">시키지 않아도 되게 · Hooks · MCP · Plugin</div>
+          <p class="text-sm text-stone-600 mb-3">Hooks: 파일을 고칠 때마다 검사를 자동으로 돌려, 매번 시키지 않아도 됩니다. MCP: Notion·DB·Figma를 연결해 복사 없이 바로 읽고 씁니다. Plugin: 스킬·hook·MCP 묶음을 <code>/plugin</code>에서 한 번에 설치합니다. 플러그인은 내 권한으로 코드를 실행하니 출처를 확인하고 필요한 것만 켜세요.</p>
           <div class="code-block px-4 py-3 flex justify-between items-center text-sm">
             <code>파일 수정할 때마다 eslint 자동 실행하는 hook 만들어줘</code>
             <button onclick="copyText(event,'파일 수정할 때마다 eslint 자동 실행하는 hook 만들어줘')" class="copy-btn text-xs text-stone-500 hover:text-white px-2 py-1 rounded">복사</button>
@@ -427,12 +431,13 @@
   <!-- Starter Kit -->
   <section id="starter-kit" class="section-gap">
     <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-semibold text-amber-600 mb-2">스타터킷</p>
       <h2 class="text-3xl font-bold tracking-tight mb-3">짧게 시작하는 프로젝트 스타터킷</h2>
-      <p class="text-stone-500 mb-6">공통 지침은 짧게, 자세한 절차는 필요할 때 읽도록 구성했습니다. 앱 채팅만 쓰는 분은 <a href="#level-up" class="guide-link">위의 지침 만들기</a>로 시작하세요.</p>
+      <p class="text-stone-500 mb-6">빈 폴더에서 규칙부터 짜지 않아도 됩니다. 기본 규칙과 스킬 3개를 한 번에 넣고 바로 시작하세요. 앱 채팅만 쓰는 분은 <a href="#level-up" class="guide-link">위의 지침 만들기</a>로 시작하세요.</p>
       <div class="grid md:grid-cols-3 gap-4 mb-6">
-        <div class="card p-6"><h3 class="font-semibold mb-2">CLAUDE.md</h3><p class="text-sm text-stone-600">한국어·근거·원본 보존·검증 등 짧은 공통 규칙. 긴 결과는 MD로 받는 선호는 직접 선택합니다.</p></div>
-        <div class="card p-6"><h3 class="font-semibold mb-2">필요할 때 읽는 참고자료</h3><p class="text-sm text-stone-600">.claude/references/guide-workflows.md에 조사·문서·큰 변경 절차를 둡니다. 항상 읽는 rules 파일은 새로 설치하지 않습니다.</p></div>
-        <div class="card p-6"><h3 class="font-semibold mb-2">개발용 스킬 3개</h3><p class="text-sm text-stone-600">/commit-flow, /review, /explain. 해당 작업을 요청할 때 사용하고, 기존 같은 이름의 파일은 보존합니다.</p></div>
+        <div class="card p-6"><h3 class="font-semibold mb-2">CLAUDE.md</h3><p class="text-sm text-stone-600">한국어 답변, 근거 확인, 원본 보존, 검증 같은 기본 규칙이 들어 있어 첫날부터 같은 설명을 안 해도 됩니다. 긴 결과를 MD로 받을지는 직접 고릅니다.</p></div>
+        <div class="card p-6"><h3 class="font-semibold mb-2">필요할 때 읽는 참고자료</h3><p class="text-sm text-stone-600">조사·문서·큰 변경 절차는 필요할 때만 읽어서 평소 대화가 무거워지지 않습니다. 위치: .claude/references/guide-workflows.md</p></div>
+        <div class="card p-6"><h3 class="font-semibold mb-2">개발용 스킬 3개</h3><p class="text-sm text-stone-600">/commit-flow(커밋 정리), /review(커밋 전 검토), /explain(파일 쉽게 설명)을 한 줄로 실행합니다. 같은 이름의 기존 파일은 덮어쓰지 않습니다.</p></div>
       </div>
       <details class="guide-details"><summary>Windows용 설치 스크립트 보기·받기</summary>
         <p>프로젝트 폴더에서 사용하세요. 먼저 스크립트 내용을 읽고 실행하세요. 기존 파일은 건너뛰며, 새로 만드는 파일은 설치 결과에 표시합니다.</p>
@@ -448,6 +453,7 @@
   <!-- How to Use Well -->
   <section class="section-gap">
     <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-semibold text-amber-600 mb-2">잘 쓰는 법</p>
       <h2 class="text-3xl font-bold tracking-tight mb-3">잘 쓰는 핵심 개념</h2>
       <p class="text-stone-500 mb-10">답이 흐려지거나 엉뚱할 때 먼저 볼 것들입니다.</p>
 
@@ -456,7 +462,7 @@
         <div class="flex items-start gap-4">
           <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-lg shrink-0">1</div>
           <div>
-            <h3 class="font-bold text-lg mb-2">컨텍스트 = 지금 대화에서 Claude가 보고 있는 것</h3>
+            <h3 class="font-bold text-lg mb-2">한 대화에 한 주제: 답이 선명해집니다</h3>
             <p class="text-sm text-stone-600 mb-4">Claude는 대화·읽은 파일·명령 결과를 "컨텍스트"에 담고 답합니다. 지금 모델은 100만 토큰까지 담고, 넘치기 전에 자동으로 요약·압축하기 때문에 <strong>공간이 모자랄 일은 드뭅니다.</strong> 문제는 양보다 섞임입니다. 관계없는 이야기가 쌓이면 답이 흐려지고 비용도 늘어납니다.</p>
 
             <!-- 상태표시줄 설명 -->
@@ -489,7 +495,7 @@
         <div class="flex items-start gap-4">
           <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-lg shrink-0">2</div>
           <div>
-            <h3 class="font-bold text-lg mb-2">CLAUDE.md = 매번 자동으로 읽는 설명서</h3>
+            <h3 class="font-bold text-lg mb-2">CLAUDE.md: 같은 설명을 매번 하지 않아도 됩니다</h3>
             <p class="text-sm text-stone-600 mb-4">프로젝트 폴더에 <code class="text-xs bg-stone-100 px-1.5 py-0.5 rounded">CLAUDE.md</code> 파일을 넣어두면 <strong>매 대화 시작할 때 Claude가 자동으로 읽습니다.</strong> "나는 이렇게 해줘"를 매번 말할 필요 없음.</p>
             <div class="grid md:grid-cols-2 gap-3">
               <div class="surface-card p-4">
@@ -510,7 +516,7 @@
         <div class="flex items-start gap-4">
           <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-lg shrink-0">3</div>
           <div>
-            <h3 class="font-bold text-lg mb-2">환각 방지 = "확인하고 말해"</h3>
+            <h3 class="font-bold text-lg mb-2">"확인하고 말해": 지어낸 답이 줄어듭니다</h3>
             <p class="text-sm text-stone-600 mb-4">AI는 모르는 것도 그럴듯하게 지어냅니다. Claude Code는 파일을 직접 읽을 수 있어서 훨씬 낫지만, <strong>규칙을 안 잡으면 여전히 추측합니다.</strong></p>
             <div class="grid md:grid-cols-3 gap-3">
               <div class="surface-card p-4">
@@ -535,7 +541,7 @@
         <div class="flex items-start gap-4">
           <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-lg shrink-0">4</div>
           <div>
-            <h3 class="font-bold text-lg mb-2">파일 = 영구 기억</h3>
+            <h3 class="font-bold text-lg mb-2">파일로 저장: 다음 대화에서 처음부터 설명하지 않아도 됩니다</h3>
             <p class="text-sm text-stone-600 mb-4">대화는 사라지지만 파일은 남습니다. <strong>중요한 건 항상 파일로 저장시키세요.</strong> 다음 세션에서 그 파일을 읽으면 기억이 이어집니다.</p>
             <div class="grid md:grid-cols-2 gap-3">
               <div class="surface-card p-4">
@@ -578,6 +584,7 @@
   <!-- Common Mistakes -->
   <section class="section-gap bg-white border-y border-black/[0.06]">
     <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-semibold text-amber-600 mb-2">피할 것</p>
       <h2 class="text-3xl font-bold tracking-tight mb-8">흔한 실수</h2>
 
       <div class="grid md:grid-cols-2 gap-4">
@@ -613,6 +620,7 @@
   <!-- Links -->
   <section class="section-gap">
     <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-semibold text-amber-600 mb-2">더 보기</p>
       <h2 class="text-3xl font-bold tracking-tight mb-8">공식 문서</h2>
       <div class="grid md:grid-cols-3 gap-3">
         <a href="https://code.claude.com/docs/en/quickstart" target="_blank" class="card p-5 hover:border-amber-200">
@@ -658,6 +666,7 @@
   <!-- Showcase -->
   <section class="section-gap">
     <div class="max-w-5xl mx-auto px-6">
+      <p class="text-sm font-semibold text-amber-600 mb-2">사례</p>
       <h2 class="text-3xl font-bold tracking-tight mb-3">Claude Code로 만든 것들</h2>
       <p class="text-stone-500 mb-8">코딩을 배우지 않고 Claude Code로 만들어 운영하는 사이트입니다.</p>
 
